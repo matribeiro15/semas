@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model dados_pessoais {
+  id            Int      @id @default(autoincrement())
+  id_user       Int
+  cress         String?  @unique(map: "cress") @db.VarChar(32)
+  telefone      String?  @db.Text
+  cpf           String   @unique(map: "cpf") @db.VarChar(15)
+  rg            String   @unique(map: "rg") @db.VarChar(15)
+  endereco      String?  @db.Text
+  especialidade String?  @db.Text
+  data_nasc     DateTime @db.Date
+  users         users    @relation(fields: [id_user], references: [id], onDelete: Cascade, map: "dados_pessoais_ibfk_1")
+
+  @@index([id_user], map: "dados_pessoais_ibfk_1")
+}
+
+model sessions {
+  id          Int      @id @default(autoincrement())
+  id_user     Int
+  data        DateTime @default(now()) @db.DateTime(0)
+  ip          String   @db.Text
+  last_access DateTime @default(now()) @db.DateTime(0)
+  status      String   @default("active") @db.VarChar(32)
+  hash        String   @unique(map: "hash") @db.VarChar(64)
+  users       users    @relation(fields: [id_user], references: [id], onDelete: Cascade, map: "sessions_ibfk_1")
+
+  @@index([id_user], map: "id_user")
+}
+
+model users {
+  id             Int              @id @default(autoincrement())
+  nome           String           @db.Text
+  email          String           @unique(map: "email") @db.VarChar(64)
+  senha          String           @db.Text
+  data           DateTime         @default(now()) @db.DateTime(0)
+  status         String           @default("pending") @db.VarChar(32)
+  hash           String           @unique(map: "hash") @db.VarChar(64)
+  dados_pessoais dados_pessoais[]
+  sessions       sessions[]
+}

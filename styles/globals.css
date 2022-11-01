@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*
+@font-face {
+  src:url('/fonts/athena-rustic.ttf');
+  font-family: 'fontDaLeh';
+}
+*/
+:root{
+  --color_1:#391a6e;
+  --color_2:#7c3aed;
+}
+select:invalid{
+  color:#cccccc;
+}
+select:invalid option{
+  color:#000000;
+}
