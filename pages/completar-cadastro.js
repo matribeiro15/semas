@@ -1,16 +1,20 @@
 import {FormDefault,InputText,ButtonDefault} from  "../components/du-objects.js"
 import LogoPrefeitura from '../components/logo-prefeitura.js'
 import Link from "next/link"
+import Router from 'next/router';
+
 import  MdOutlineFamilyRestroom  from "react-icons/md";
 export default function Cadastro(){
+
+  var success = function(msg){
+    Router.push('/');
+  }
+
   return (
-    <HeadLeh>
-      <title>\Comletar cadastro| SEMAS</title>
-    </HeadLeh>
     <div className="w-full flex flex-row min-h-screen">
       <div className="flex-auto flex flex-col items-center justify-center p-3">
         <h1 className="text-cor_principal-600 text-4xl font-bold  mb-5">Completar Cadastro</h1>
-        <FormDefault API="users/create" id="formCad" resetAfterSend={true} className="w-full flex flex-col justify-center items-stretch max-w-[500px]">
+        <FormDefault API="users/complete" id="formCad" onSuccess={success} resetAfterSend={false} className="w-full flex flex-col justify-center items-stretch max-w-[500px]">
           <InputText name="cress" label="CRESS" className="w-full text-last rounded-t-xl" required={false}/>
           <InputText name="crp" label="CRP" className="w-full text-last" required={false}/>
           <InputText name="telefone" mask="(dd)ddddd-dddd" label="Telefone" className="w-full text-last"/>

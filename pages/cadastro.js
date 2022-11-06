@@ -1,15 +1,17 @@
 import {FormDefault,InputText,ButtonDefault} from  "../components/du-objects.js"
 import LogoPrefeitura from '../components/logo-prefeitura.js'
 import Link from "next/link"
+import Router from 'next/router';
 import  MdOutlineFamilyRestroom  from "react-icons/md";
 export default function Cadastro(){
-  return (  <HeadLeh>
-      <title>Cadastro | SEMAS</title>
-    </HeadLeh>
-    <div className="w-full flex flex-row min-h-screen">
+  var success = function(msg){
+    Router.push('/login');
+  }
+  return (
+    <div className ="w-full flex flex-row min-h-screen">
       <div className="flex-auto flex flex-col items-end justify-center p-3">
         <h1 className="text-cor_principal-600 font-bold text-4xl mb-5">Cadastre-se</h1>
-        <FormDefault API="users/create" id="formCad" resetAfterSend={true} className="w-full flex flex-col justify-center items-end">
+        <FormDefault API="users/create" id="formCad"  onSuccess={success} resetAfterSend={true} className="w-full flex flex-col justify-center items-end">
           <InputText fatherClassName="w-full flex flex-col items-end" name="nome" label="Nome Completo" className="max-w-[500px] w-full text-right rounded-t-xl"/>
           <InputText fatherClassName="w-full flex flex-col items-end" type="email" name="email" label="Email" className="max-w-[500px] w-full text-right"/>
           <InputText fatherClassName="w-full flex flex-col items-end" type="cpf" name="cpf" label="CPF " className="max-w-[500px] w-full text-right"/>
@@ -31,5 +33,6 @@ export default function Cadastro(){
         <LogoPrefeitura/>
       </div>
     </div>
+
   )
 }

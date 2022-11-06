@@ -23,7 +23,7 @@ Users.signUp = async function(obj){
     return false;
   }
 }
-Users.login = async function(login,senha,ip_user){
+Users.login = async function(login,senha,ip_user,token){
   //busca por cpf
   var cpflogin = login.replaceAll(/[^\d]/g,'');
   var busca = await prisma.dados_pessoais.findFirst({
@@ -47,7 +47,8 @@ Users.login = async function(login,senha,ip_user){
     var sessao = {
       id_user:busca.id,
       ip:ip_user,
-      hash:Leh.setToken()
+      data: new Date(),
+      hash:token
     }
     var result = await prisma.sessions.create({
       data:sessao
@@ -100,6 +101,39 @@ Users.getUser = async function(wr){
   if (busca) {
     return busca;
   }else {
+    return false;
+  }
+}
+
+Users.complete = async function(obj,id_user){
+  var fields = [
+    "cress",
+    "crp",
+    "telefone",
+    "cpf",
+    "rg",
+    "endereco",
+    "especialidade",
+    "data_nasc"
+  ];
+  for(var x in obj){
+    if(!fields.includes(x) || obj[x].length == 0){
+      delete obj[x];
+    }
+  }
+
+
+
+  obj.telefone = Leh.apenasNumeros(obj.telefone);
+  obj.cpf = Leh.apenasNumeros(obj.cpf);
+  obj.data_nasc = new Date(obj.data_nasc);
+  obj.id_user = id_user;
+  var result = await prisma.dados_pessoais.create({
+    data:obj
+  });
+  if(result){
+    return result;
+  }else{
     return false;
   }
 }

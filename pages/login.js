@@ -1,23 +1,36 @@
 import {FormDefault,InputText,ButtonDefault} from  "../components/du-objects.js"
 import LogoPrefeitura from '../components/logo-prefeitura.js'
 import Link from "next/link"
+import Leh from '../controller/leh.js'
+import Cookies from 'universal-cookie';
 import Alerta from '../components/alerta.js'
 import {useState,useEffect} from "react"
 
 export default function Login(){
-  // const [_alert,setAlert]=useState(<></>);
-  //
-  // const erro= async function(err){
-  //   var resp= await err.json();
-  //   setAlert(<Alerta type="erro" text={resp.msg}/>)
-  // }
-  var erro = function(e){ }
+
+  const cookies = new Cookies();
+
+  if(cookies.get('auth_token') == undefined){
+    cookies.set('auth_token',Leh.setToken(),{
+      maxAge:(3600 * 24),
+      sameSite:true,
+      path:'/'
+    });
+  }
+  // cookies.set('myCat', 'Pacman', { path: '/' });
+  var success = function(msg){
+    Router.push('/');
+  }
+
+  var erro = function(e){
+    cookies.remove('auth_token');
+  }
 
   return (
     <div className="w-full flex flex-row min-h-screen">
       <div className="flex-auto flex flex-col items-end justify-center p-3">
         <h1 className="text-cor_principal-600 text-4xl mb-5">Login</h1>
-        <FormDefault API="users/login" onError={erro} className="w-full flex flex-col justify-center items-end">
+        <FormDefault API="users/login" onError={erro}  onSuccess={success} className="w-full flex flex-col justify-center items-end">
           <InputText fatherClassName="w-full flex flex-col items-end" name="email" label="Email" className="max-w-[500px] w-full text-right rounded-t-xl"/>
           <InputText fatherClassName="w-full flex  flex-col items-end" type="password" name="senha" label="Senha" className="max-w-[500px] w-full text-right rounded-b-xl"/>
           <div className="w-full text-right mt-1">

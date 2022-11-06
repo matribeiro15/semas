@@ -308,6 +308,7 @@ function ButtonDefault(props){
     </button>
   )
 }
+
 function InputFile(props){
   var defaultProps = {};
   for(var y in props){

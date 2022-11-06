@@ -11,6 +11,7 @@ model dados_pessoais {
   id            Int      @id @default(autoincrement())
   id_user       Int
   cress         String?  @unique(map: "cress") @db.VarChar(32)
+  crp           String?  @db.VarChar(32)
   telefone      String?  @db.Text
   cpf           String   @unique(map: "cpf") @db.VarChar(15)
   rg            String   @unique(map: "rg") @db.VarChar(15)
@@ -45,4 +46,22 @@ model users {
   hash           String           @unique(map: "hash") @db.VarChar(64)
   dados_pessoais dados_pessoais[]
   sessions       sessions[]
+}
+
+model cadastro_usuario {
+  id                           Int       @id @default(autoincrement())
+  nome                         String    @db.Text
+  nome_social                  String    @db.Text
+  rg                           String?   @db.VarChar(15)
+  orgao_expeditor              String?   @db.VarChar(20)
+  origem                       String    @db.Text
+  expedicao                    DateTime  @db.DateTime(0)
+  cpf                          String?   @db.VarChar(15)
+  nis                          String?   @db.VarChar(15)
+  indentificacao_estrangeira   String    @db.Text
+  telefone_celular             String?   @db.VarChar(20)
+  telefone_celular_alternativo String?   @db.Text
+  estado_civil                 String    @db.Text
+  nacionalidade                String    @db.Text
+  data_nasc                    DateTime? @db.Date
 }

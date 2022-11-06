@@ -1,6 +1,9 @@
 const{createHash}=require("crypto")
 var Leh ={}
-
+Leh.apenasNumeros = function(string){
+    var numsStr = string.replace(/[^0-9]/g,'');
+    return numsStr;
+}
 Leh.passwordHash= function(senha){
  var hash = createHash("sha256").update("ac@kmosvs"+senha).digest("hex");
  return hash;
