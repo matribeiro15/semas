@@ -1,4 +1,4 @@
-import {FormDefault,InputText,ButtonDefault,SelectInput} from  "../components/du-objects.js"
+import {AlternativeForm,InputText,ButtonDefault,SelectInput,Checkbox} from  "../components/du-objects.js"
 import {bairros} from '../bairros.js'
 import HeadLeh from  'next/head'
 import LogoPrefeitura from '../components/logo-prefeitura.js'
@@ -12,18 +12,18 @@ export default function Ficha(){
       <div className="flex-auto flex flex-col items-center justify-center p-3">
         <h1 className="text-cor_principal-600 font-bold text-4xl  fontMaster">Cadastrar Usuário</h1>
           <h1 className="text-black text-2xl font-medium font-mono  InputText-cursive  justify-center  py-3 ">Documentação do Responsável</h1>
-           <FormDefault API="users/create" id="formCad" resetAfterSend={true} className="max-w-[800px] w-full flex flex-wrap gap-2 mx-auto justify-center items-stretch">
+           <AlternativeForm action="/api/users/create" id="formCad" resetAfterSend={true} className="max-w-[800px] w-full flex flex-wrap gap-2 mx-auto justify-center items-stretch">
                 <InputText fatherClassName="flex-auto" withLabel={true} name="nome" label="Nome" className="rounded-xl"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="nome_social" label="Nome Social" className="rounded-xl"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="rg" label="RG" className="rounded-xl"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="orgao_expedidor" label="Orgão Expeditor" className="rounded-xl"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="origem" label="Origem" className="rounded-xl"/>
-                <InputText fatherClassName="flex-auto" withLabel={true} name="data_espe" mask="dd/dd/dddd" label="Expediação" className="rounded-xl"/>
+                <InputText fatherClassName="flex-auto" withLabel={true} name="data_exp" mask="dd/dd/dddd" label="Expediação" className="rounded-xl"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="cpf" mask="ddd.ddd.ddd-dd" label="CPF" className="rounded-xl"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="nis" label="NIS" className=" rounded-xl "/>
-                <InputText fatherClassName="flex-auto" withLabel={true} name="indentificaçao_estragenira" label="Indentificação estrangeira" className=" rounded-xl" required={false}/>
+                <InputText fatherClassName="flex-auto" withLabel={true} name="indentificacao_estrangeira" label="Indentificação estrangeira" className=" rounded-xl" required={false}/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="telefone" mask="(dd)ddddd-dddd" label="Telefone/Celular" className=" rounded-xl"/>
-                <InputText fatherClassName="flex-auto" withLabel={true} name="telefone" mask="(dd)ddddd-dddd" label="Telefone/celular Alternativo" className=" rounded-xl"/>
+                <InputText fatherClassName="flex-auto" withLabel={true} name="telefone_alt" mask="(dd)ddddd-dddd" label="Telefone/celular Alternativo" className=" rounded-xl"/>
           <h1 className="text-black text-2xl font-medium font-mono  text-condensed w-full text-center  py-3">Dados Pessoais</h1>
                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_civil" label="Estado civil" className="rounded-xl ">
                     <option value="">Selecione Uma Opção</option>
@@ -86,7 +86,7 @@ export default function Ficha(){
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Mista">Mista</option>
                   </SelectInput>
-                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_de_concervacao" label="Estado de Conservação" className="rounded-xl">
+                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_de_conservacao" label="Estado de Conservação" className="rounded-xl">
                     <option value="">Selecione Uma Opção</option>
                     <option value="Bom">Bom </option>
                     <option value="Péssimo">Péssimo</option>
@@ -94,17 +94,20 @@ export default function Ficha(){
                     <option value="Médio">Médio</option>
                     <option value="Ruim">Ruim</option>
                  </SelectInput>
-                 <InputText fatherClassName="flex-2" withLabel={true} name="saneamento_Basico" label="Saneamento Basico" className="rounded-xl"/>
-                    <input taype="checkbox" name="distribuicao_de_agua_potavel" velue=" Distribuição de água potavel"/>
-                    <input taype="checkbox" name="" velue=""/ >
-                    <input taype="checkbox" name="" velue=""/ >
-                    <input taype="checkbox" name="" velue=""/ >
+
+                 <div className="rounded-xl border p-2">
+                  <h2 className="font-bold text-sm text-cor_principal-700 mb-3">Saneamento Básico</h2>
+                  <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
+                  <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
+                  <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
+                  <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
+                 </div>
 
 
            <div className="text-center mt-8  w-full  ">
             <ButtonDefault text="Proximo"/>
           </div>
-        </FormDefault>
+        </AlternativeForm>
       </div>
     </div>
   )

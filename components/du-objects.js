@@ -362,4 +362,16 @@ function SelectInput(props){
   </div>
   )
 }
-export{FormDefault, InputText,InputPassword,ButtonDefault, SelectInput,AlternativeForm,LoaderForm}
+
+function Checkbox (props){
+  var id = Leh.setToken();
+  return (
+    <div>
+      <input type="checkbox" id={id} name={props.name} value={props.value} required={true}/>
+      <label for={id} className="ml-1 text-cor_principal-600 font-bold cursor-pointer hover:text-cor_principal-900">{props.label}</label>
+    </div>
+  )
+}
+
+
+export{FormDefault, InputText,InputPassword,ButtonDefault, SelectInput,AlternativeForm,LoaderForm,Checkbox}
