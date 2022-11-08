@@ -3,6 +3,7 @@ import {bairros} from '../bairros.js'
 import HeadLeh from  'next/head'
 import LogoPrefeitura from '../components/logo-prefeitura.js'
 import Link from "next/link"
+import {FaUserPlus} from 'react-icons/fa';
 export default function Ficha(){
   return (
     <div className="w-full flex flex-wrap min-h-screen">
@@ -10,7 +11,7 @@ export default function Ficha(){
       <title>Cadastrar Usuário | SEMAS</title>
     </HeadLeh>
       <div className="flex-auto flex flex-col items-center justify-center p-3">
-        <h1 className="text-cor_principal-600 font-bold text-4xl  fontMaster">Cadastrar Usuário</h1>
+          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-cor_principal-600 to-violet-500  font-bold text-4xl mb-5 fontMaster"><FaUserPlus className="inline align-bottom text-cor_principal-800 w-col mr-2"/>Cadastrar Usuário</h1>
           <h1 className="text-black text-2xl font-medium font-mono  InputText-cursive  justify-center  py-3 ">Documentação do Responsável</h1>
            <AlternativeForm action="/api/users/create" id="formCad" resetAfterSend={true} className="max-w-[800px] w-full flex flex-wrap gap-2 mx-auto justify-center items-stretch">
                 <InputText fatherClassName="flex-auto" withLabel={true} name="nome" label="Nome" className="rounded-xl"/>
@@ -86,21 +87,23 @@ export default function Ficha(){
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Mista">Mista</option>
                   </SelectInput>
-                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_de_conservacao" label="Estado de Conservação" className="rounded-xl">
+                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_de_conservacao" label="Estado de Conservação" className="rounded-xl ">
                     <option value="">Selecione Uma Opção</option>
                     <option value="Bom">Bom </option>
                     <option value="Péssimo">Péssimo</option>
                     <option value="Excelente">Excelente</option>
                     <option value="Médio">Médio</option>
                     <option value="Ruim">Ruim</option>
-                 </SelectInput>
+                  </SelectInput>
 
-                 <div className="rounded-xl border p-2">
-                  <h2 className="font-bold text-sm text-cor_principal-700 mb-3">Saneamento Básico</h2>
-                  <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
-                  <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
-                  <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
-                  <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
+                 <div className="rounded-xl border p-2 inline ">
+                   <h2 className="font-bold text-sm inline  text-cor_principal-700 mb-3">Saneamento Básico</h2>
+                    <div className="flex gap-[8px] justify-center text-center">
+                       <Checkbox label="Distribuição de água potável" value="Distribuição de água potável" name="saneamento[]"/>
+                       <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento[]"/>
+                       <Checkbox label="Coleta de Lixo" value="Coleta de Lixo " name="saneamento[]"/>
+                       <Checkbox label="Drenagem Urbana" value="Drenagem Urbana" name="saneamento[]"/>
+                   </div>
                  </div>
 
 

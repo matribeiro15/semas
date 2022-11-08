@@ -17,3 +17,60 @@ select:invalid{
 select:invalid option{
   color:#000000;
 }
+
+.menu{
+  width: 300px;
+  height: 400px;
+  background-color: #1E2B35;
+  border-radius: 20px 20px;
+}
+.menu .header{
+  border-radius: 10px 10px 10px 10px;
+  padding: 15 px;
+  background-color: #2A3942;
+  color: #FFFFFF;
+  font-family: 'mono', sans-serif;
+}
+.corpo li{
+  transition: 1s all;
+  font-family: 'mono', sans-serif;
+  font-size: 20px;
+  padding: 20px;
+  margin-left: 0;
+  margin-top: 0px;
+  color: #fff;
+  list-style: none;
+  display: block;
+  border-top-right-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+}
+
+
+
+li:hover{
+  transition: 1s all;
+  color: #2f89fc;
+  background-color: rgba(42, 56, 65, 0.82);
+  border-top-right-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+  cursor: pointer;
+}
+
+.corpo > li{
+  float: left;
+}
+
+.corpo li ul{
+  background: #1E2B32;
+  margin-left: 280px;
+  margin-top: -38px;
+  display: none;
+  position: static;
+  border-top-right-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+}
+
+.corpo li:hover > ul{
+  display: block;
+  cursor: pointer;
+}

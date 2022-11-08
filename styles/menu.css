@@ -1,0 +1,34 @@
+.tag-menu {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  position: absolute;
+  left: 50%;
+  top: -1000px;
+  transform: translateX(-50%);
+  background-color: #eeeeee;
+  transition: all 0.3s;
+  z-index: 1;
+}
+
+.menu:hover {
+  top: 60px;
+}
+
+.tag {
+  background-color: #ff0000;
+  padding: 10px 20px;
+  width: 75px;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+.tag:hover ~ .menu {
+  top: 60px;
+  z-index: 1;
+  opacity: 1;
+}

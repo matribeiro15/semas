@@ -14,7 +14,6 @@ export default function Cadastro(){
         <FormDefault API="users/create" id="formCad"  onSuccess={success} resetAfterSend={true} className="w-full flex flex-col justify-center items-end">
           <InputText fatherClassName="w-full flex flex-col items-end" name="nome" label="Nome Completo" className="max-w-[500px] w-full text-right rounded-t-xl"/>
           <InputText fatherClassName="w-full flex flex-col items-end" type="email" name="email" label="Email" className="max-w-[500px] w-full text-right"/>
-          <InputText fatherClassName="w-full flex flex-col items-end" type="cpf" name="cpf" label="CPF " className="max-w-[500px] w-full text-right"/>
           <InputText fatherClassName="w-full flex  flex-col items-end"  type="password" name="senha" label="Senha" className="max-w-[500px] w-full text-right"/>
           <InputText fatherClassName="w-full flex flex-col items-end" type="password" name="csenha" label="Confirme sua Senha" className="max-w-[500px] w-full text-right rounded-b-xl"/>
           <div className="w-full text-right mt-8">
