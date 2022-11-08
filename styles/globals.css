@@ -20,36 +20,39 @@ select:invalid option{
 
 .menu{
   width: 300px;
-  height: 400px;
   background-color: #1E2B35;
   border-radius: 20px 20px;
 }
 .menu .header{
-  border-radius: 10px 10px 10px 10px;
-  padding: 15 px;
+  border-radius: 20px 20px 0px 0px;
+  padding: 15px;
+  font-size: 18pt;
   background-color: #2A3942;
   color: #FFFFFF;
   font-family: 'mono', sans-serif;
 }
 .corpo li{
-  transition: 1s all;
+  transition: 300ms all;
   font-family: 'mono', sans-serif;
   font-size: 20px;
   padding: 20px;
   margin-left: 0;
   margin-top: 0px;
+  text-align: left;
   color: #fff;
   list-style: none;
   display: block;
-  border-top-right-radius: 10px 10px;
-  border-bottom-right-radius: 10px 10px;
+}
+.corpo li:last-child{
+  border-radius: 0 0 20px 20px;
 }
 
 
 
 li:hover{
-  transition: 1s all;
+  transition: 300ms all;
   color: #2f89fc;
+  padding-left: 25px;
   background-color: rgba(42, 56, 65, 0.82);
   border-top-right-radius: 10px 10px;
   border-bottom-right-radius: 10px 10px;
