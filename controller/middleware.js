@@ -1,17 +1,17 @@
 import nextConnect from 'next-connect'
-import multiparty from 'multipart'
+import multiparty from 'multiparty'
 
-const middleware= nextConnect()
+const middleware = nextConnect()
 
-middleware.use(async (req, res, nex)=>{
-  delete req.header['Content-type']
-  const from= new mutilparty.From()
+middleware.use(async (req, res, next) => {
+  delete req.headers['Content-Type']
+  const form = new multiparty.Form()
   // console.log("Middle: ",req);
 
-  await from.parse(req,function(err, fields, fildes){
-    // console.log("Middle: ",err;
-    req.body=fields
-    req.files=files
+  await form.parse(req, function (err, fields, files) {
+    // console.log("Middle: ",err);
+    req.body = fields
+    req.files = files
     next()
   })
 })

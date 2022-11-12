@@ -1,22 +1,24 @@
-import {FaUserPlus} from 'react-icons/fa';
-import {FcInspection,FcBullish,FcImport,FcBusinessContact} from 'react-icons/fc';
+import {FaUserPlus,FaRegUserCircle,FaChartPie,FaPaste,FaSignInAlt,FaFileImport,FaFileInvoiceDollar} from 'react-icons/fa';
 import Link from 'next/link';
 export default function Menu(props)
 {
   return (
+    <div className="p-5 ">
       <div className="menu">
         <div className="header">
           <h3>Menu</h3>
         </div>
-        <div className="corpo" >
+        <div className="corpo">
           <ul>
+            <Link href="/lista-atendimentos"><li><FaFileImport className="inline mr-2"/>Novo atendimento </li></Link>
             <Link href="/cadastrar-usuario"><li><FaUserPlus className="inline mr-2"/> Cadastrar Usuário</li></Link>
-            <Link href=""><li><FcInspection className="inline mr-2"/> Atendimentos</li></Link>
-            <Link href=""><li><FcBullish className="inline mr-2"/>Estatisticas</li></Link>
-            <Link href=""><li><FcBusinessContact className="inline mr-2"/> Meu perfil</li></Link>
-            <Link href=""><li><FcImport className="inline mr-2 tex-cor_principal-600"/>Sair</li></Link>
+            <Link href=""><li><FaPaste className="inline mr-2"/> Atendimento técnico</li></Link>
+            <Link href=""><li><FaChartPie className="inline mr-2"/>Estatística</li></Link>
+            <Link href="/meu-perfil"><li><FaRegUserCircle className="inline mr-2"/>Meu perfil</li></Link>
+            <Link href=""><li><FaSignInAlt className="inline mr-2 tex-cor_principal-600"/>Sair</li></Link>
           </ul>
         </div>
       </div>
+    </div>
   );
 }

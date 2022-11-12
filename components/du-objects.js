@@ -221,6 +221,7 @@ function InputText(props){
     step={props.step}
     max={props.max}
     min={props.min}
+    list={props.list}
     value={props.value}
     defaultValue={props.defaultValue}
     title={props.title}
@@ -368,7 +369,7 @@ function Checkbox (props){
   return (
     <div>
       <input type="checkbox" id={id} name={props.name} value={props.value} required={true}/>
-      <label for={id} className="ml-2  text-cor_principal-500 font-bold cursor-pointer hover:text-cor_principal-900 ">{props.label}</label>
+      <label htmlFor={id} className="ml-2  text-cor_principal-500 font-bold cursor-pointer hover:text-cor_principal-900 ">{props.label}</label>
     </div>
   )
 }

@@ -7,13 +7,17 @@ export default function Cadastro(){
 
   return (
 
-  <div className="flex gap-[300px] text-center">
-    <Menu className="flex-col-reverse text-gray-50  "/>
-      <h1 className="obeject-center bg-clip-text text-transparent bg-gradient-to-r from-cor_principal-600 to-violet-400  font-bold text-6xl mb-5 fontMaster">SEMAS</h1>
+<div className="w-full gap-[300px] text-center">
+      <Menu/>
+      <div>
+      <h1 className="text-cor_principal-600 font-bold text-6xl fontMaster">SEMAS</h1>
+      <h2 className="justify-top  text-cor_principal-800  text-1xl mb-1 fontMaster">Secretaria municipal de assistência social</h2>
+      </div>
+
+ <div className="flex-auto flex flex-col items-center justify-center p-3 ">
 
 
-       <div className="flex-auto flex flex-col items-center justify-center p-3">
-        <InputText name="buscar_Usuário" label="Buscar Usuario" className="w-col text-center rounded pointer-events-none"/>
+
        </div>
   </div>
 

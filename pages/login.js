@@ -4,6 +4,7 @@ import Link from "next/link"
 import Leh from '../controller/leh.js'
 import Cookies from 'universal-cookie';
 import Alerta from '../components/alerta.js'
+import Router from 'next/router';
 import {useState,useEffect} from "react"
 
 export default function Login(){
