@@ -37,9 +37,7 @@ export default function MeuPerfil(props){
 
 
   var menu = (
-    <div className="flex-1 md:max-w-[320px]">
-      <Menu/>
-    </div>
+    <Menu/>
   );
 
   var changeProfile = function(e){
@@ -75,14 +73,14 @@ export default function MeuPerfil(props){
   }
 
   return (
-    <div className="w-max mx-auto md:mx-0 md:w-full flex flex-col md:flex-row md:py-[2.5em] px-[1em] md:px-[1em] xl:px-[5em] md:gap-2">
+    <div className="rounded-xl p-2 w-full flex">
       <LoadingBottom show={showLoading}/>
       <HeadLeh>
         <title>Meu Perfil | SEMAS</title>
         <link rel="icon" href="/img/fav.png" />
       </HeadLeh>
       {menu}
-      <div className="flex-auto w-max md:w-screen pt-[70px] md:pt-0">
+      <div className="flex-auto w-max md:w-screen pt-[70px] md:pt-0 px-4 md:pr-[3em] md:pl-4">
         <AlternativeForm onSuccess={success} onError={onError} action="/api/users/myaccount" id="formCadMyData" className="flex flex-col">
 
           <h2 className="w-full text-left text-md font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4">DADOS DE ACESSO</h2>
@@ -100,7 +98,7 @@ export default function MeuPerfil(props){
 
 
 
-          <div className="w-full text-center md:text-right mb-8 md:mb-1 mt-8">
+          <div className="w-full text-center md:text-left mb-8 md:mb-1 mt-8">
             <ButtonDefault text="SALVAR"/>
           </div>
 

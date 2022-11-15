@@ -10,10 +10,9 @@ export default function Menu(props)
         </div>
         <div className="corpo">
           <ul>
-            <Link href="/lista-atendimentos"><li><FaFileImport className="inline mr-2"/>Novo atendimento </li></Link>
+            <Link href="/novo-atendimento"><li><FaFileImport className="inline mr-2"/>Novo atendimento </li></Link>
             <Link href="/cadastrar-usuario"><li><FaUserPlus className="inline mr-2"/> Cadastrar Usuário</li></Link>
             <Link href=""><li><FaPaste className="inline mr-2"/> Atendimento técnico</li></Link>
-            <Link href=""><li><FaChartPie className="inline mr-2"/>Estatística</li></Link>
             <Link href="/meu-perfil"><li><FaRegUserCircle className="inline mr-2"/>Meu perfil</li></Link>
             <Link href=""><li><FaSignInAlt className="inline mr-2 tex-cor_principal-600"/>Sair</li></Link>
           </ul>

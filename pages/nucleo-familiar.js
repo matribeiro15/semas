@@ -2,14 +2,18 @@ import {FormDefault,InputText,ButtonDefault,SelectInput,Checkbox} from  "../comp
 import HeadLeh from '../components/head.js'
 import LogoPrefeitura from '../components/logo-prefeitura.js'
 import Link from "next/link"
+import Menu from '../components/menu.js'
 import {instituicoes} from '../instituicoes.js'
 import {MdOutlineFamilyRestroom}  from "react-icons/md";
 export default function Familiar(){
 return (
 <>
-<HeadLeh>
-<title>Núcleo Familiar | SEMAS</title>
-</HeadLeh>
+
+  <HeadLeh>
+  <title>Núcleo Familiar | SEMAS</title>
+  </HeadLeh>
+
+  <Menu/>
 <div className="w-full flex-col gap-x-{size}">
 <div className="flex-auto  flex-col items-center  p-3">
   <div className="flex-auto flex flex-col items-center justify-center p-3">
@@ -67,7 +71,7 @@ return (
             </div>
         </div>
                 <div className="w-full text-center text-color-white py-3 redonded-ful ">
-                <ButtonDefault text="Adicionar Membro" className="transition ease-in-out delay-120 bg-blue-400 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"/>
+                <ButtonDefault text="adicionar familiar" className="transition ease-in-out delay-120 bg-blue-400 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"/>
                 </div>
      </FormDefault>
     <FormDefault API="users/create" id="formCad" resetAfterSend={true} className="max-w-[1000px] w-full flex flex-wrap gap-2 mx-auto justify-center items-stretch">

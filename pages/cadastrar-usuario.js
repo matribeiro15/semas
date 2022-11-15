@@ -6,7 +6,7 @@ import Link from "next/link"
 import {FaUserPlus} from 'react-icons/fa';
 export default function Ficha(){
   return (
-    <div className="w-full flex flex-wrap min-h-screen">
+    <div className="w-full flex flex-wrap min-h-screen p-2">
     <HeadLeh>
       <title>Cadastrar Usuário | SEMAS</title>
     </HeadLeh>

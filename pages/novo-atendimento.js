@@ -1,5 +1,6 @@
 import {FormDefault,InputText,ButtonDefault,SelectInput} from  "../components/du-objects.js"
 import Link from "next/link"
+import HeadLeh from  'next/head'
 import Router from 'next/router';
 import Menu from '../components/menu.js'
 import {instituicoes} from '../instituicoes.js'
@@ -9,6 +10,10 @@ export default function Cadastro(){
   const labelsATD = Object.keys(atendimentos);
   var success = function(msg){
     Router.push('/');
+    
+    <HeadLeh>
+    <title>Novo Atendimento | SEMAS</title>
+    </HeadLeh>
   }
 
   return (
@@ -21,8 +26,8 @@ export default function Cadastro(){
        </div>
 
 
-
-       <div className="max-w-[1000px] w-full flex flex-wrap gap-5 mx-auto justify-center items-stretch">
+<div className="rounded-xl borde flex-2">
+       <div className="max-w-[800px] w-full flex flex-wrap gap-2 mx-auto justify-auto items-stretch">
           <SelectInput  fatherClassName="flex-3" withLabel={true} name="atendimentos_simplificados" label="Atendimentos Simplificados" className="rounded-xl flex flex-col items-last justify-center text-cor_principal-700 border p-2  cursor-pointer text-center text-m w-[150px] h-[40px] hover:shadow-md transition">
              <option value="">Selecione Uma Opção</option>
             <optgroup label="PSB">
@@ -63,6 +68,7 @@ export default function Cadastro(){
             <option value="NUTRI VIDA:LEITE">NUTRI VIDA: LEITE</option>
             <option value="MAMÃE CHEGUEI:AUXÍLIO NATALIDADE">MAMÃE CHEGUEI:AUXÍLIO NATALIDADE</option>
             </SelectInput>
+  </div>
 
             <SelectInput  fatherClassName="flex-3" withLabel={true} name="acompanhamentos" label="Acompanhamentos" className="rounded-xl flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[290px] h-[40px] hover:shadow-md transition">
             <option value="">Selecione Uma Opção</option>
