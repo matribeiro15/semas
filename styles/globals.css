@@ -165,15 +165,15 @@ gap-[8px] z-10
 
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(100,100,100,0.1);
+  background: rgba(200,200,200,0.2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(29,78,216);
+  background: rgb(13, 148, 136);
   border-radius: 6px;
   transition: all 280ms ease-in-out;
 }

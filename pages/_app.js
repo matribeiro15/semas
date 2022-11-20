@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import '../public/styles/animations.css'
+import '../styles/animations.css'
 import React, { useState,useEffect} from 'react'
 import {useRouter} from 'next/router';
 function MyApp({ Component, pageProps }) {

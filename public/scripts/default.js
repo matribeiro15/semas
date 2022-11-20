@@ -9,8 +9,8 @@ function closeNotification(){
     setTimeout(function(){
       el.classList.remove('good');
       el.classList.remove('bad');
-      document.querySelector('#notificationFrame h2').innerHTML = '';
-      document.querySelector('#notificationFrame p').innerHTML = '';
+      el.querySelector('h2').innerHTML = '';
+      el.querySelector('p').innerHTML = '';
       closingNotification = false;
       showingNotification = false;
     },550);
@@ -19,9 +19,9 @@ function closeNotification(){
 function notification(label,text,type,timing){
   if(!showingNotification){
     showingNotification = true;
-    document.querySelector('#notificationFrame h2').innerHTML = label;
-    document.querySelector('#notificationFrame p').innerHTML = text;
     var el = document.querySelector('#notificationFrame');
+    el.querySelector('h2').innerHTML = label;
+    el.querySelector('p').innerHTML = text;
     NotificationSong.play();
     if(type !== undefined){
       el.classList.add(type);

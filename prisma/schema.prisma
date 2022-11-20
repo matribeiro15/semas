@@ -36,29 +36,16 @@ model sessions {
   @@index([id_user], map: "id_user")
 }
 
-model users {
-  id             Int              @id @default(autoincrement())
-  nome           String           @db.Text
-  email          String           @unique(map: "email") @db.VarChar(64)
-  senha          String           @db.Text
-  data           DateTime         @default(now()) @db.DateTime(0)
-  status         String           @default("pending") @db.VarChar(32)
-  hash           String           @unique(map: "hash") @db.VarChar(64)
-  dados_pessoais dados_pessoais[]
-  sessions       sessions[]
-  permissions    permissions[]
-}
-
 model cadastro_usuario {
   id                           Int       @id @default(autoincrement())
   nome                         String    @db.Text
   nome_social                  String    @db.Text
-  rg                           String?   @db.VarChar(15)
-  orgao_expeditor              String?   @db.VarChar(20)
+  rg                           String?   @unique(map: "rg") @db.VarChar(15)
+  orgao_expedidor              String?   @db.VarChar(20)
   natural_de                   String    @db.Text
-  expedicao                    DateTime  @db.DateTime(0)
-  cpf                          String?   @db.VarChar(15)
-  nis                          String?   @db.VarChar(15)
+  expedicao                    DateTime  @db.Date
+  cpf                          String?   @unique(map: "cpf") @db.VarChar(15)
+  nis                          String?   @unique(map: "nis") @db.VarChar(15)
   indentificacao_estrangeira   String    @db.Text
   telefone_celular             String?   @db.VarChar(20)
   telefone_celular_alternativo String?   @db.Text
@@ -79,25 +66,42 @@ model cadastro_usuario {
   numero_de_comodos            String    @db.VarChar(20)
   tempo_de_moradia             String    @db.VarChar(15)
   edificada_em                 String    @db.Text
-  estado_de__conservacao       String    @map("estado_de _conservacao") @db.Text
-  saneamento_basico            String    @db.Text
+  estado_de_conservacao        String    @db.Text
+  saneamento_basico            String?   @db.Text
+  forma_acesso                 String?   @db.Text
+  observacao_cadastro          String?   @db.Text
+  ponto_coleta                 String?   @db.Text
+  local_cadastro               String?   @db.Text
+  recebe_algum_beneficio       String?   @db.Text
+  data                         DateTime  @db.DateTime(0)
+  status                       String    @default("active") @db.VarChar(30)
+  hash                         String    @unique(map: "hash") @db.VarChar(64)
+  user                         String    @db.VarChar(64)
+}
+
+model users {
+  id               Int                @id @default(autoincrement())
+  nome             String             @db.Text
+  email            String             @unique(map: "email") @db.VarChar(64)
+  senha            String             @db.Text
+  data             DateTime           @default(now()) @db.DateTime(0)
+  status           String             @default("pending") @db.VarChar(32)
+  hash             String             @unique(map: "hash") @db.VarChar(64)
+  dados_pessoais   dados_pessoais[]
+  permissions      permissions[]
+  sessions         sessions[]
 }
 
 model nucleo_familiar {
-  id                     Int      @id @default(autoincrement())
-  recebe_algum_beneficio String   @db.Text
-  responsavel            String   @db.Text
-  observacao             String   @db.Text
-  nome                   String   @db.Text
-  data_nasc              DateTime @db.DateTime(0)
-  parentesco             String   @db.Text
-  renda_individual       Float    @db.Float
-  nis                    String   @db.VarChar(20)
-  foma_de_acesso         String   @db.Text
-  observacao_de_cadastro String   @db.Text
-  ponto_cole             String   @db.Text
-  data                   DateTime @db.DateTime(0)
-  local_cadastro         String   @db.Text
+  id               Int      @id @default(autoincrement())
+  responsavel      String   @db.Text
+  observacao       String   @db.Text
+  nome             String   @db.Text
+  data_nasc        DateTime @db.DateTime(0)
+  parentesco       String   @db.Text
+  renda_individual Float    @db.Float
+  nis              String   @db.VarChar(20)
+  data             DateTime @db.DateTime(0)
 }
 
 model permissions {

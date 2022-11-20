@@ -7,6 +7,35 @@ const getMyData = async function(callback){
   }
 }
 
+var setMask = function(mask,text){
+  mask = mask.split('');
+  text = text.split('');
+  var n = 0;
+  var result = ''
+  for (var i = 0; i < mask.length; i++) {
+    console.log(mask[i]);
+    if(mask[i] == 'd'){
+      if(typeof text[n] == 'string'){
+        result += text[n];
+        n++;
+      }
+    }else{
+      result += mask[i];
+      if(mask[i] === text[n]){
+        n++;
+      }
+    }
+  }
+  return result;
+}
+
+var ucwords = (str)=>{
+    str = str.toLowerCase();
+    return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
+        return $1.toUpperCase();
+    });
+}
+
 const checkUserLogin = async function(callback){
   getMyData(function(user){
     if(!user){
@@ -18,4 +47,4 @@ const checkUserLogin = async function(callback){
     callback(user);
   });
 }
-export {getMyData,checkUserLogin}
+export {getMyData,checkUserLogin,ucwords,setMask}

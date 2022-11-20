@@ -1,4 +1,4 @@
-import {FaUserPlus,FaRegUserCircle,FaChartPie,FaPaste,FaSignInAlt,FaFileImport,FaFileInvoiceDollar} from 'react-icons/fa';
+import {FaUserPlus,FaRegUserCircle,FaChartPie,FaPaste,FaSignInAlt,FaFileImport,FaFileInvoiceDollar,FaHome} from 'react-icons/fa';
 import Link from 'next/link';
 export default function Menu(props)
 {
@@ -10,6 +10,7 @@ export default function Menu(props)
         </div>
         <div className="corpo">
           <ul>
+            <Link href="/"><li><FaHome className="inline mr-2"/>Inicio</li></Link>
             <Link href="/novo-atendimento"><li><FaFileImport className="inline mr-2"/>Novo atendimento </li></Link>
             <Link href="/cadastrar-usuario"><li><FaUserPlus className="inline mr-2"/> Cadastrar Usuário</li></Link>
             <Link href=""><li><FaPaste className="inline mr-2"/> Atendimento técnico</li></Link>
