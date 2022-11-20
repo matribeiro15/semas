@@ -77,6 +77,7 @@ model cadastro_usuario {
   status                       String    @default("active") @db.VarChar(30)
   hash                         String    @unique(map: "hash") @db.VarChar(64)
   user                         String    @db.VarChar(64)
+  nucleo_familiar              nucleo_familiar[]
 }
 
 model users {
@@ -93,15 +94,20 @@ model users {
 }
 
 model nucleo_familiar {
-  id               Int      @id @default(autoincrement())
-  responsavel      String   @db.Text
-  observacao       String   @db.Text
-  nome             String   @db.Text
-  data_nasc        DateTime @db.DateTime(0)
-  parentesco       String   @db.Text
-  renda_individual Float    @db.Float
-  nis              String   @db.VarChar(20)
-  data             DateTime @db.DateTime(0)
+  id                  Int                 @id @default(autoincrement())
+  id_cadastro         Int
+  responsavel         String              @db.Text
+  observacao          String              @db.Text
+  nome                String              @db.Text
+  data_nasc           DateTime            @db.DateTime(0)
+  parentesco          String              @db.Text
+  renda_individual    Float               @db.Float
+  nis                 String              @db.VarChar(20)
+  data                DateTime            @db.DateTime(0)
+  hash                String              @unique(map: "hash") @db.VarChar(64)
+  cadastro_usuario    cadastro_usuario    @relation(fields: [id_cadastro],references: [id])
+
+  @@index([id_cadastro], map: "idcadastro")
 }
 
 model permissions {
