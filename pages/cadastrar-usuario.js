@@ -7,7 +7,7 @@ import Router from "next/router"
 import {FaUserPlus} from 'react-icons/fa';
 export default function Ficha(){
   var success = function(e){
-    notification('Sucesso!','Usuárioo cadastrado com sucesso!','good');
+    notification('Sucesso!','Usuário cadastrado com sucesso!','good');
     Router.push('/nucleo-familiar/'+e.data.hash)
   }
   var error = async function(e,a){

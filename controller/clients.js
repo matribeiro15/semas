@@ -42,12 +42,59 @@ Cidadao.new = async function(dados){
       delete dados[x];
     }else if(x == 'saneamento_basico'){
       dados[x] = dados[x].join(';');
+    }else{
+      if(typeof dados[x] == 'string' && dados[x].length == 0){
+        delete dados[x];
+      }
     }
   }
   dados.hash = Leh.setToken()
   dados.data = new Date();
+  if(dados.data_nasc && typeof dados.data_nasc == 'string'){
+    dados.data_nasc = new Date(dados.data_nasc);
+  }
 
   var resp = await prisma.cadastro_usuario.create({
+    data:dados
+  });
+  if(resp.hash){
+    return resp;
+  }else{
+    return false;
+  }
+}
+
+Cidadao.newChild = async function(dados){
+  var allowed = [
+    "responsavel",
+    "observacao",
+    "nome",
+    "data_nasc",
+    "parentesco",
+    "renda_individual",
+    "nis",
+    "cpf",
+    "nome_social",
+    "user",
+    "rg",
+    "id_cadastro"
+  ];
+  for(var x in dados){
+    if(!allowed.includes(x)){
+      delete dados[x];
+    }else{
+      if(typeof dados[x] == 'string' && dados[x].length == 0){
+        delete dados[x];
+      }
+    }
+  }
+  if(dados.data_nasc){
+    dados.data_nasc = new Date(dados.data_nasc);
+  }
+  dados.hash = Leh.setToken()
+  dados.data = new Date();
+
+  var resp = await prisma.nucleo_familiar.create({
     data:dados
   });
   if(resp.hash){
@@ -60,7 +107,10 @@ Cidadao.new = async function(dados){
 Cidadao.get = async (wr)=>{
   try {
     var cid = await prisma.cadastro_usuario.findFirst({
-      where:wr
+      where:wr,
+      include:{
+        nucleo_familiar:true
+      }
     });
     if(cid){
       return cid;

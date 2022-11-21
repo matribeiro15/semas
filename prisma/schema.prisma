@@ -13,8 +13,8 @@ model dados_pessoais {
   cress         String?  @unique(map: "cress") @db.VarChar(32)
   crp           String?  @db.VarChar(32)
   telefone      String?  @db.Text
-  cpf           String   @unique(map: "cpf") @db.VarChar(15)
-  rg            String   @unique(map: "rg") @db.VarChar(15)
+  cpf           String?  @unique(map: "cpf") @db.VarChar(15)
+  rg            String?  @unique(map: "rg") @db.VarChar(15)
   endereco      String?  @db.Text
   especialidade String?  @db.Text
   data_nasc     DateTime @db.Date
@@ -37,75 +37,80 @@ model sessions {
 }
 
 model cadastro_usuario {
-  id                           Int       @id @default(autoincrement())
-  nome                         String    @db.Text
-  nome_social                  String    @db.Text
-  rg                           String?   @unique(map: "rg") @db.VarChar(15)
-  orgao_expedidor              String?   @db.VarChar(20)
-  natural_de                   String    @db.Text
-  expedicao                    DateTime  @db.Date
-  cpf                          String?   @unique(map: "cpf") @db.VarChar(15)
-  nis                          String?   @unique(map: "nis") @db.VarChar(15)
-  indentificacao_estrangeira   String    @db.Text
-  telefone_celular             String?   @db.VarChar(20)
-  telefone_celular_alternativo String?   @db.Text
-  estado_civil                 String    @db.Text
-  nacionalidade                String    @db.Text
-  data_nasc                    DateTime? @db.Date
-  escolaridade                 String    @db.Text
-  sexo                         String    @db.Text
-  profissao_ocupacao           String    @db.Text
-  renda_individual             Float     @db.Float
-  logradouro                   String    @db.Text
-  bairro_setor                 String    @db.Text
-  cep                          String    @db.VarChar(20)
-  numero                       String    @db.VarChar(15)
-  area                         String    @db.Text
-  complemento                  String    @db.Text
-  tipo_de_imovel               String    @db.Text
-  numero_de_comodos            String    @db.VarChar(20)
-  tempo_de_moradia             String    @db.VarChar(15)
-  edificada_em                 String    @db.Text
-  estado_de_conservacao        String    @db.Text
-  saneamento_basico            String?   @db.Text
-  forma_acesso                 String?   @db.Text
-  observacao_cadastro          String?   @db.Text
-  ponto_coleta                 String?   @db.Text
-  local_cadastro               String?   @db.Text
-  recebe_algum_beneficio       String?   @db.Text
-  data                         DateTime  @db.DateTime(0)
-  status                       String    @default("active") @db.VarChar(30)
-  hash                         String    @unique(map: "hash") @db.VarChar(64)
-  user                         String    @db.VarChar(64)
+  id                           Int               @id @default(autoincrement())
+  nome                         String            @db.Text
+  nome_social                  String?           @db.Text
+  rg                           String?           @unique(map: "rg") @db.VarChar(15)
+  orgao_expedidor              String?           @db.VarChar(20)
+  natural_de                   String            @db.Text
+  expedicao                    DateTime?         @db.Date
+  cpf                          String?           @unique(map: "cpf") @db.VarChar(15)
+  nis                          String?           @unique(map: "nis") @db.VarChar(15)
+  indentificacao_estrangeira   String?           @db.Text
+  telefone_celular             String?           @db.VarChar(20)
+  telefone_celular_alternativo String?           @db.Text
+  estado_civil                 String            @db.Text
+  nacionalidade                String            @db.Text
+  data_nasc                    DateTime?         @db.Date
+  escolaridade                 String            @db.Text
+  sexo                         String            @db.Text
+  profissao_ocupacao           String            @db.Text
+  renda_individual             Float             @db.Float
+  logradouro                   String            @db.Text
+  bairro_setor                 String            @db.Text
+  cep                          String            @db.VarChar(20)
+  numero                       String            @db.VarChar(15)
+  area                         String?           @db.Text
+  complemento                  String?           @db.Text
+  tipo_de_imovel               String?           @db.Text
+  numero_de_comodos            String?           @db.VarChar(20)
+  tempo_de_moradia             String            @db.VarChar(15)
+  edificada_em                 String?           @db.Text
+  estado_de_conservacao        String?           @db.Text
+  saneamento_basico            String?           @db.Text
+  forma_acesso                 String?           @db.Text
+  observacao_cadastro          String?           @db.Text
+  ponto_coleta                 String?           @db.Text
+  local_cadastro               String?           @db.Text
+  recebe_algum_beneficio       String?           @db.Text
+  data                         DateTime          @db.DateTime(0)
+  status                       String            @default("active") @db.VarChar(30)
+  hash                         String            @unique(map: "hash") @db.VarChar(64)
+  user                         String            @db.VarChar(64)
+  total_beneficios             Float?            @db.Float
   nucleo_familiar              nucleo_familiar[]
 }
 
 model users {
-  id               Int                @id @default(autoincrement())
-  nome             String             @db.Text
-  email            String             @unique(map: "email") @db.VarChar(64)
-  senha            String             @db.Text
-  data             DateTime           @default(now()) @db.DateTime(0)
-  status           String             @default("pending") @db.VarChar(32)
-  hash             String             @unique(map: "hash") @db.VarChar(64)
-  dados_pessoais   dados_pessoais[]
-  permissions      permissions[]
-  sessions         sessions[]
+  id             Int              @id @default(autoincrement())
+  nome           String           @db.Text
+  email          String           @unique(map: "email") @db.VarChar(64)
+  senha          String           @db.Text
+  data           DateTime         @default(now()) @db.DateTime(0)
+  status         String           @default("pending") @db.VarChar(32)
+  hash           String           @unique(map: "hash") @db.VarChar(64)
+  dados_pessoais dados_pessoais[]
+  permissions    permissions[]
+  sessions       sessions[]
 }
 
 model nucleo_familiar {
-  id                  Int                 @id @default(autoincrement())
-  id_cadastro         Int
-  responsavel         String              @db.Text
-  observacao          String              @db.Text
-  nome                String              @db.Text
-  data_nasc           DateTime            @db.DateTime(0)
-  parentesco          String              @db.Text
-  renda_individual    Float               @db.Float
-  nis                 String              @db.VarChar(20)
-  data                DateTime            @db.DateTime(0)
-  hash                String              @unique(map: "hash") @db.VarChar(64)
-  cadastro_usuario    cadastro_usuario    @relation(fields: [id_cadastro],references: [id])
+  id               Int              @id @default(autoincrement())
+  responsavel      String?          @db.Text
+  observacao       String?          @db.Text
+  nome             String           @db.Text
+  data_nasc        DateTime?        @db.Date
+  parentesco       String           @db.Text
+  renda_individual Float            @db.Float
+  nis              String?          @unique(map: "nis") @db.VarChar(20)
+  data             DateTime         @db.DateTime(0)
+  hash             String           @unique(map: "hash") @db.VarChar(64)
+  id_cadastro      Int
+  cpf              String?          @unique(map: "cpf") @db.VarChar(20)
+  nome_social      String?          @db.Text
+  rg               String?          @unique(map: "rg") @db.VarChar(20)
+  user             String?          @db.Text
+  cadastro_usuario cadastro_usuario @relation(fields: [id_cadastro], references: [id], onDelete: Cascade)
 
   @@index([id_cadastro], map: "idcadastro")
 }
