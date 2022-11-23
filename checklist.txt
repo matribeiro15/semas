@@ -1,7 +1,19 @@
 pages/cadastrar-usuario.js
-  - Trocar "Natural de:" por "Local de Nascimento", e inserir um Select de Cidade e outro de Estado (UF);
-  - Inserir um datalist no campo "Nacionalidade";
-  - Inserir a opção "Fundamental Incompleto" no campo "Escolaridade";
-  - Substituir o campo "Tempo de Moradia" por select com opções aproximadas;
-  - Alterar a ordem dos options no campo "Estado de Conservação". Colocar em ordem crescente ou decrescente;
-  - 
+
+  -lista de estados do brasil/ lista de municipio de cada estado colocar em um object e depois separar em natural de....
+
+
+
+  -pegar os dados do codigo por  familia
+  -falar com eusangela sobre as rendas percapta  por ordem
+not
+
+
+
+
+   para casa
+   - seguranca visuzualizacao de cadastros
+   - apresentacao do sistema
+   - visuzualizacao de dados
+   -faze paginas de atendimento e vizualizacao
+   -

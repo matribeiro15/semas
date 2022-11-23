@@ -22,12 +22,20 @@ function FormDefault(props){
           if(list[name].validity.valid){
             if(list[name]["type"] !== undefined && (list[name]["type"] == "checkbox" || list[name]["type"] == "radio")){
               if(list[name].checked){
+                var vlr = list[name]["value"];
                 if(list[name].dataset.type == "Int"){
-                  req[list[name]["name"]] = parseInt(list[name]["value"]);
+                  vlr = parseInt(vlr);
                 }else if(list[name].dataset.type == "Float"){
-                  req[list[name]["name"]] = parseFloat(list[name]["value"]);
+                  vlr = parseFloat(vlr);
+                }
+                if(list[name]["type"] == "checkbox"){
+                  if(typeof req[list[name]["name"]] !== 'object'){
+                    req[list[name]["name"]] = [vlr];
+                  }else{
+                    req[list[name]["name"]][req[list[name]["name"]].length] = vlr;
+                  }
                 }else{
-                  req[list[name]["name"]] = list[name]["value"];
+                  req[list[name]["name"]] = vlr;
                 }
               }
             }else{
@@ -63,6 +71,7 @@ function FormDefault(props){
     var status_response;
     var response = await fetch(API, requestOptions)
     setLoading(false);
+    console.log(response);
     if(response.status == 200){
       if(props.onSuccess !== undefined){
         props.onSuccess(response);

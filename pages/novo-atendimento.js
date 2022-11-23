@@ -61,7 +61,7 @@ export default function Cadastro(){
     <h1 className="text-md text-cor_principal-900 font-bold px-4 mb-7">{client ? 'CPF '+setMask('ddd.ddd.ddd-dd',client.cpf) : ''} {client ? ' |  NIS '+client.nis : ''}</h1>
     <div className="rounded-xl flex-2 flex-col border pb-3">
       <div className="w-full flex flex-wrap gap-2 mx-auto justify-center items-stretch bg_color_2 text-white">
-        <SelectInput  fatherClassName="" withLabel={true} name="atendimentos_simplificados" label="Atendimentos Simplificados" className="rounded-xl min-w-[300px] flex flex-col items-last justify-center text-cor_principal-700 border p-2  cursor-pointer text-center text-m w-[150px] h-[40px] hover:shadow-md transition ">
+        <SelectInput  fatherClassName="" withLabel={true} name="atendimentos_simplificados" label="Atendimentos Simplificados" className="rounded-xl min-w-[300px] flex flex-col items-last justify-center text-cor_principal-700 border p-2  cursor-pointer text-center text-m w-[150px] h-[40px] hover:shadow-md transition " required={false}>
           <option value="">Selecione Uma Opção</option>
           <optgroup label="PSB">
             <option value="Orientação Social">Orientação Social</option>
@@ -72,7 +72,7 @@ export default function Cadastro(){
             <option value="Oreintação Social">Orientação Social</option>
           </optgroup>
         </SelectInput>
-        <InputText fatherClassName="" withLabel={true} name="atendimentos_tecnicos" label="Atendimentos Técnicos" className=" flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[330px] h-[40px] hover:shadow-md transition" list="procedimentos_list"/>
+        <InputText fatherClassName="" withLabel={true} name="atendimentos_tecnicos" label="Atendimentos Técnicos" className=" flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[330px] h-[40px] hover:shadow-md transition" list="procedimentos_list" required={false}/>
         <datalist id="procedimentos_list">{list()}</datalist>
 
         <SelectInput  fatherClassName="" withLabel={true} name="Beneficios" label="Benefícios" className="flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[320px] h-[40px] hover:shadow-md transition">
@@ -84,7 +84,7 @@ export default function Cadastro(){
           <option value="NUTRI VIDA:LEITE">NUTRI VIDA: LEITE</option>
           <option value="MAMÃE CHEGUEI:AUXÍLIO NATALIDADE">MAMÃE CHEGUEI:AUXÍLIO NATALIDADE</option>
         </SelectInput>
-        <SelectInput  fatherClassName="" withLabel={true} name="acompanhamentos" label="Acompanhamentos" className="rounded-xl flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[290px] h-[40px] hover:shadow-md transition">
+        <SelectInput  fatherClassName="" withLabel={true} name="acompanhamentos" label="Acompanhamentos" className="rounded-xl flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[290px] h-[40px] hover:shadow-md transition" required={false}>
           <option value="">Selecione Uma Opção</option>
           <optgroup label="PSB">
             <option value="PAIF">PAIF</option>
@@ -100,7 +100,7 @@ export default function Cadastro(){
             <option value="ACOLHIMENTO INSTITUCIONAL">ACOLHIMENTO INSTITUCIONAL</option>
           </optgroup>
         </SelectInput>
-        <SelectInput fatherClassName="" withLabel={true} name="local_onde_foi_feito_o_cadastro"  label="Onde foi feito o cadastro?" className="rounded-xl flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[180px] h-[40px] hover:shadow-md transition">
+        <SelectInput fatherClassName="" withLabel={true} name="local_onde_foi_feito_o_cadastro"  label="Onde foi feito o cadastro?" className="rounded-xl flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[180px] h-[40px] hover:shadow-md transition"required={false} >
           <option value="">Selecione Uma Opção</option>
           {
             instituicoes.map((el,id)=>{
@@ -110,8 +110,9 @@ export default function Cadastro(){
         </SelectInput>
       </div>
     </div>
-    <div className="w-full text-center mt-8 ">
-      <ButtonDefault text="Mandar para Técnico"/>
+    
+    <div className="w-full text-last mt-5">
+      <ButtonDefault text="Adicionar ao cadastro "/>
     </div>
   </FormDefault>
 </PageDefault>

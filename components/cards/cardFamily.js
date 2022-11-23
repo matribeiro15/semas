@@ -15,6 +15,7 @@ export default function CardFamily(props){
       <Cell label="CPF" content={props.dados.cpf ? setMask('ddd.ddd.ddd-dd',props.dados.cpf) : '-----'} className="border-x"/>
       <Cell label="Data de Nascimento" content={(new Date(props.dados.data_nasc)).toLocaleDateString('pt-BR')} className="border-x"/>
       <Cell label="Parentesco" content={props.dados.parentesco}/>
+      <Cell label="NIS" content={props.dados.nis ? setMask('ddddddddd',props.dados.nis) : '-----'} className="border-x"/>
       <Cell label="Renda Individual" content={props.dados.renda_individual.toLocaleString('pt-BR',{style:"currency",currency:"BRL"})}/>
       <div className="flex items-center pr-2">
         <span className="cursor-pointer hover:text-neutral-200 transition"><MdDelete className="text-2xl"/></span>

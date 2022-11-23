@@ -38,13 +38,11 @@ handler.post(async (req, res)=>{
       try {
         var result = await Cidadao.new(obj);
       } catch (e) {
-
           if (e.code === 'P2002') {
             res.status(401).json({msg:"Usuário Já Cadastrado"})
           }else{
             res.status(400).json({msg:"Houve algum conflito de dados, verifique os campos e tente novamente!"})
           }
-
       }
       console.log(result);
       if(result){

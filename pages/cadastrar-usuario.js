@@ -5,6 +5,7 @@ import Menu from '../components/menu.js'
 import Link from "next/link"
 import Router from "next/router"
 import {FaUserPlus} from 'react-icons/fa';
+import PageDefault from '../components/pageDefault.js'
 export default function Ficha(){
   var success = function(e){
     notification('Sucesso!','Usuário cadastrado com sucesso!','good');
@@ -14,15 +15,8 @@ export default function Ficha(){
     notification('Erro!',e.response.data.msg,'bad');
   }
   return (
-    <div className="w-full flex flex-wrap min-h-screen p-2">
-    <HeadLeh>
-      <title>Cadastrar Usuário | SEMAS</title>
-    </HeadLeh>
-
-        <Menu/>
-
+      <PageDefault checkUser={true} title="Cadastrar Usuario| SEMAS" checkUser={true} label="Cadastrar Usuario" icon="FaUserPlus">
       <div className="flex-auto flex flex-col items-center justify-center p-3">
-          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-cor_principal-600 to-violet-500  font-bold text-4xl mb-5 fontMaster"><FaUserPlus className="inline align-bottom text-cor_principal-800 w-col mr-2"/>Cadastrar Usuário</h1>
           <h1 className="text-black text-2xl font-medium font-mono  InputText-cursive  justify-center  py-3 ">Documentação do Responsável</h1>
            <AlternativeForm onSuccess={success} onError={error} action="/api/clients/create" id="formCad" resetAfterSend={true} className="max-w-[800px] w-full flex flex-wrap gap-2 mx-auto justify-center items-stretch">
                 <InputText fatherClassName="flex-auto" withLabel={true} name="nome" label="Nome" className="rounded-xl"/>
@@ -36,8 +30,14 @@ export default function Ficha(){
                 <InputText fatherClassName="flex-auto" withLabel={true} name="telefone_celular" mask="(dd)ddddd-dddd" label="Telefone/Celular" className=" rounded-xl"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="telefone_celular_alternativo" mask="(dd)ddddd-dddd" label="Telefone/celular Alternativo" className=" rounded-xl" required={false}/>
           <h1 className="text-black text-2xl font-medium font-mono  text-condensed w-full text-center  py-3">Dados Pessoais</h1>
-          <InputText fatherClassName="flex-auto" withLabel={true} name="natural_de" label="Natural de:" className="rounded-xl"/>
-                 <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_civil" label="Estado civil" className="rounded-xl">
+
+
+                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="natural_de" label="Local de nascimento " className="rounded-xl" required={false}>
+                  <option value="">Selecione municipio-estado</option>
+                  <option value="Vilhena">Vilhena</option>
+                  </SelectInput>
+
+               <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_civil" label="Estado civil" className="rounded-xl">
                     <option value="">Selecione Uma Opção</option>
                     <option value="Solteiro">Solteiro(a)</option>
                     <option value="Casado">Casado(a)</option>
@@ -46,7 +46,10 @@ export default function Ficha(){
                     <option value="União estavel">União estavel</option>
                     <option value="Separado">Separado/Divorciado(a)</option>
                  </SelectInput>
-                <InputText fatherClassName="flex-auto" withLabel={true} name="nacionalidade"  label="Nacionalidade" className="rounded-xl"/>
+                <InputText fatherClassName="" withLabel={true} name="nacionalidade"  label="Nacionalidade" className="rounded-xl" list="paises_input"/>
+                  <datalist id="paises_input">
+                    <option value="Brasileiro">Brasileiro</option>
+                  </datalist>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="data_nasc" type="date" label="Data de nascimento" className="rounded-xl "/>
                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="escolaridade" label="Escolaridade" className="rounded-xl ">
                     <option value="">Selecione Uma Opção</option>
@@ -54,6 +57,7 @@ export default function Ficha(){
                     <option value="Ensino médio incompleto">Ensino médio incompleto</option>
                     <option value="Não alfabetizado">Não alfabetizado</option>
                     <option value="Fundamental completo">Fundamental completo</option>
+                    <option value="Fundamental incompleto">Fundamental incompleto</option>
                     <option value="Ensino Superior incompleto">Ensino Superior incompleto</option>
                     <option value="Ensino Superior completo">Ensino Superior completo</option>
                  </SelectInput>
@@ -63,7 +67,7 @@ export default function Ficha(){
                     <option value="Masculino">Masculino</option>
                  </SelectInput>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="profissao_ocupacao" label="Profissão/Ocupação" className="rounded-xl"/>
-                <InputText fatherClassName="flex-auto" withLabel={true} name="renda_individual" mask="R$dddd,dd"label="Renda Individual" className="rounded-xl" />
+                <InputText fatherClassName="flex-auto" withLabel={true} name="renda_individual" typeData="Float" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Renda Individual R$" className="rounded-xl"/>
             <h1 className="text-black text-2xl font-medium font-mono  w-full text-center  py-3 ">Endereço</h1>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="logradouro" label="Logradouro " className="rounded-xl"/>
                 <SelectInput fatherClassName="flex-auto" withLabel={true} name="bairro_setor" label="Bairro/Setor" className="rounded-xl" >
@@ -92,7 +96,19 @@ export default function Ficha(){
                     <option value="Não se Aplica">Não se aplica</option>
                   </SelectInput>
                 <InputText fatherClassName="flex-2" withLabel={true} name="numero_de_comodos" mask="ddd" label="Número de comodos" className="rounded-xl"/>
-                <InputText  fatherClassName="flex-2" withLabel={true} name="tempo_de_moradia"   label="Tempo de moradia" className="rounded-xl"/>
+                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="tempo_de_moradia"   label="Tempo de moradia" className="rounded-xl">
+                  <option value="">Selecione Uma Opção</option>
+                  <option value="Menos de 1 mês">Menos de 1 mês </option>
+                  <option value="Mais de 1 mês até 6 meses">Mais de 1 mês até 6 meses </option>
+                  <option value="Mais de 6 meses até 1 ano">Mais de 6 meses até 1 ano</option>
+                  <option value="1 ano até 3 anos">1 ano até 3 anos</option>
+                  <option value="3 anos até 10 anos">3 anos até 10 anos</option>
+                  <option value="10 anos até 20 anos">10 anos até 20 anos  </option>
+                  <option value="20 anos ou mais">20 anos ou mais</option>
+                  <option value="Desde o nascimento">Desde o nascimento</option>
+
+                  </SelectInput>
+
                   <SelectInput fatherClassName="flex-auto" withLabel={true} name="edificada_em" label="Edificada em:" className="rounded-xl" >
                     <option value="">Selecione Uma Opção</option>
                     <option value="Madeira">Madeira</option>
@@ -103,10 +119,10 @@ export default function Ficha(){
                   <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_de_conservacao" label="Estado de Conservação" className="rounded-xl " >
                     <option value="">Selecione Uma Opção</option>
                     <option value="Bom">Bom </option>
-                    <option value="Péssimo">Péssimo</option>
-                    <option value="Excelente">Excelente</option>
                     <option value="Médio">Médio</option>
+                    <option value="Excelente">Excelente</option>
                     <option value="Ruim">Ruim</option>
+                    <option value="Péssimo">Péssimo</option>
                     <option value="Não se Aplica">Não se aplica</option>
                   </SelectInput>
 
@@ -126,6 +142,6 @@ export default function Ficha(){
           </div>
         </AlternativeForm>
       </div>
-    </div>
+    </PageDefault>
   )
 }

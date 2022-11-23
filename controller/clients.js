@@ -121,6 +121,44 @@ Cidadao.get = async (wr)=>{
     return false;
   }
 }
+Cidadao.updateBasic = async (dados,user)=>{
+  var allow = [
+    'forma_acesso',
+    'observacao_cadastro',
+    'ponto_coleta',
+    'local_cadastro',
+    'recebe_algum_beneficio',
+    'total_beneficios',
+    'telefone_celular',
+    'telefone_celular_alternativo',
+    'estado_civil',
+    'escolaridade',
+    'profissao_ocupacao'
+  ];
+  for(var x in dados){
+    if(!allow.includes(x)){
+      delete dados[x];
+    }else{
+      if(typeof dados[x] == 'object'){
+        dados[x] = dados[x].join(';');
+      }else if(dados[x].length == 0){
+        delete dados[x];
+      }
+    }
+  }
+  console.log(dados,user);
+  var res = await prisma.cadastro_usuario.update({
+    where:{
+      hash:user
+    },
+    data:dados
+  });
+  if(res){
+    return res;
+  }else{
+    return false;
+  }
+}
 Cidadao.search = async (wr)=>{
   try {
     var cid = await prisma.cadastro_usuario.findMany({

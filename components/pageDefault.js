@@ -29,6 +29,25 @@ export default function PageDefault(props){
     var Icon = function(){ return <></>;};
   }
 
+  const loading = (
+    <>
+      <HeadLeh>
+        <title>Carregando...</title>
+      </HeadLeh>
+      <div className="flex gap-x-{size}">
+        <Menu loader={true}/>
+        <div className="flex flex-col flex-auto pr-7">
+          <h2 className="loadingBG w-full text-left text-xl font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4 flex items-center">&nbsp;</h2>
+          <div className="rounded-2xl loadingBG min-h-[400px]">
+          </div>
+        </div>
+      </div>
+    </>
+  )
+
+  if(props.checkUser && !user){
+    return loading;
+  }
   return (
     <>
     <HeadLeh>
@@ -36,6 +55,7 @@ export default function PageDefault(props){
     </HeadLeh>
     <div className="flex gap-x-{size}">
       <Menu/>
+
       <div className="flex flex-col flex-auto pr-7">
         <h2 className="w-full text-left text-xl font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4 flex items-center"><Icon className="mr-3 text-white"/> {props.label}</h2>
         {props.children}

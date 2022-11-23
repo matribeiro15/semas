@@ -1,4 +1,3 @@
-
 import {setMask} from '../controller/utils.js';
 import {useEffect,useState} from 'react';
 import FrameClientResult from '../components/FrameClientResult.js'

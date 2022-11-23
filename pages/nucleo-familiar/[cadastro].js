@@ -24,6 +24,14 @@ export default function Familiar(){
     notification("Erro",e.msg,'bad');
   }
 
+  const success = function(){
+    // Router.push("/");
+    notification("Sucesso!","Cadastramento Realizado com Sucesso!",'good');
+  }
+  const error = async function(e){
+    notification("Erro",e.msg,'bad');
+  }
+
   const getClient = async function(){
     var resp = await Leh.post('/api/clients/get',{hash:cadastro});
     if(resp.status == 200){
@@ -94,23 +102,23 @@ return (
             <ButtonDefault text="Adicionar Familiar" className="transition ease-in-out delay-120 bg-blue-400 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"/>
           </div>
         </FormDefault>
-        <AlternativeForm action="/api/clients/update" className="max-w-[1000px] w-full flex flex-wrap gap-3 justify-center mx-auto self-center items-center justify-center">
+        <FormDefault onSuccess={success} onError={error} API="clients/update" noSendToken={true} noSendHash={true} resetAfterSend={false} className="max-w-[1000px] w-full flex flex-wrap gap-3 justify-center mx-auto self-center items-center justify-center">
           <h1 className="text-black text-2xl font-medium font-mono py-4  w-full text-center mb-3">Renda Familiar</h1>
           <div className="rounded-xl border p-2 w-full flex flow-wrap">
             <div>
               <h2 className="font-bold text-sm text-cor_principal-700 mb-3">Recebe algum beneficio?</h2>
               <div className="flex gap-x-[30px] gap-y-[8px] justify-center flex-wrap">
-                <Checkbox label="Não Recebe" value="Não Recebe" name="recebe_beneficio[]" required={false}/>
-                <Checkbox label="Auxilio Brasil" value="Auxilio Brasil" name="recebe_beneficio[]" required={false}/>
-                <Checkbox label="BPC(idade)" value="BPC(idade)" name="recebe_beneficio[]" required={false}/>
-                <Checkbox label="BPC(PCD)" value="BPC(PCD)" name="recebe_beneficio[]" required={false}/>
-                <Checkbox label="Mulher protegida" value="mulher protegida" name="recebe_beneficio[]" required={false}/>
-                <Checkbox label="Crescendo Bem" value="Crecendo bem" name="recebe_beneficio[]" required={false}/>
+                <Checkbox label="Não Recebe" value="Não Recebe" name="recebe_algum_beneficio" required={false}/>
+                <Checkbox label="Auxilio Brasil" value="Auxilio Brasil" name="recebe_algum_beneficio" required={false}/>
+                <Checkbox label="BPC(idade)" value="BPC(idade)" name="recebe_algum_beneficio" required={false}/>
+                <Checkbox label="BPC(PCD)" value="BPC(PCD)" name="recebe_algum_beneficio" required={false}/>
+                <Checkbox label="Mulher protegida" value="mulher protegida" name="recebe_algum_beneficio" required={false}/>
+                <Checkbox label="Crescendo Bem" value="Crecendo bem" name="recebe_algum_beneficio" required={false}/>
               </div>
             </div>
             <div className="flex items-center min-w-[300px]">
               <div className="text-cor_principal-700 font-bold text-2xl mr-2 pt-5">R$</div>
-              <InputText fatherClassName="flex-auto" withLabel={true} name="benefícios_total" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Total em Benefícios Recebidos" className="rounded-xl"  required={false}/>
+              <InputText fatherClassName="flex-auto" withLabel={true} name="total_beneficios" typeData="Float" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Total em Benefícios Recebidos" className="rounded-xl"  required={false}/>
             </div>
           </div>
           <h1 className="text-black text-2xl font-medium font-mono py-4   w-full text-center mb-3 ">Dados Do cadastro</h1>
@@ -121,9 +129,9 @@ return (
             <option value="Busca ativa">Busca ativa</option>
             <option value="abordagem social">Abordagem Social</option>
           </SelectInput>
-          <InputText fatherClassName="flex-1" withLabel={true} name="observacao" label="Observação de cadastro" className="rounded-xl"  required={false}/>
+          <InputText fatherClassName="flex-1" withLabel={true} name="observacao_cadastro" label="Observação de cadastro" className="rounded-xl"  required={false}/>
           <InputText fatherClassName="flex-1" withLabel={true} name="ponto_coleta" label="Ponto de coleta(beneficios)" className="rounded-xl"  required={false}/>
-          <SelectInput fatherClassName="flex-0" withLabel={true} name="onde_cadastro"  label="Local onde foi feito o cadastro" className="rounded-xl">
+          <SelectInput fatherClassName="flex-0" withLabel={true} name="local_cadastro"  label="Local onde foi feito o cadastro" className="rounded-xl">
             <option value="">Selecione Uma Opção</option>
             {
               instituicoes.map((el,id)=>{
@@ -131,10 +139,11 @@ return (
               })
             }
           </SelectInput>
+          <input type="hidden" name="user" value={cadastro}/>
           <div className="w-full text-center text-last object-left-top mt-8  ">
             <ButtonDefault text="Cadastrar Familia"/>
           </div>
-        </AlternativeForm>
+        </FormDefault>
       </div>
     </div>
   </PageDefault>
