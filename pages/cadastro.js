@@ -1,5 +1,5 @@
  import {FormDefault,InputText,ButtonDefault} from  "../components/du-objects.js"
-import LogoPrefeitura from '../components/logo-prefeitura.js'
+import PrefeituraLogo from '../components/prefeitura-logo.js'
 import Link from "next/link"
 import Router from 'next/router';
 import  MdOutlineFamilyRestroom  from "react-icons/md";
@@ -27,9 +27,19 @@ export default function Cadastro(){
           </Link>
         </div>
       </div>
-      <div className="flex-auto w-full flex flex-col items-center justify-center max-w-[500px] bg-cor_principal-600 ">
-        <h1 className="text-slate-100 text-7xl font-bold ">SEMAS</h1>
-        <LogoPrefeitura/>
+      <div className="flex-auto w-full flex flex-col items-center justify-center max-w-[500px] bg-cor_principal-700 ">
+        <h1 className="text-slate-100 text-7xl font-bold font-[Saudagar]">SEMAS</h1>
+        <h2 className="text-2xl  text-slate-100  text-center font-bold mb-[-2px]">Secretaria Municipal de </h2>
+          <h3 className="text-2xl text-slate-100 text-center font-bold mb-4">Assistência Social</h3>
+  <div className="flex flex-col justify-between items-center p-1 mb-4">
+
+          <div className="bottom px-2 py-1 rounded-r-lg flex  items-center flex-col">
+            <PrefeituraLogo/>
+             <h1 className="text-slate-100 text-sm-3">Prefeitura Municipal</h1>
+             <h1 className="text-slate-100 text-center text-sm-3 ">de Vilhena</h1>
+                 </div>
+              </div>
+
       </div>
     </div>
 

@@ -318,7 +318,7 @@ function ButtonOrange(props){
 }
 function ButtonDefault(props){
   return (
-    <button onClick={props.onClick} disabled={props.disabled} className={'disabledButton rounded-lg text-white font-bold inline-block bg-cor_principal-700 shadow-lg hover:shadow-md border-2 border-cor_principal-700 hover:border-2 hover:scale-[0.98] hover:shadow-cor_principal-600/50 text-lg shadow-cor_principal-600/50 px-4 py-2 transition-all border-double transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-cor_principal-500 duration-300 duration-200 '+props.className}>
+    <button onClick={props.onClick} disabled={props.disabled} className={'disabledButton rounded-lg text-white font-bold inline-block bg-cor_principal-700 shadow-lg hover:shadow-md border-2 border-cor_principal-700 hover:border-2 hover:scale-[0.98] hover:shadow-cor_principal-600/50 text-lg shadow-cor_principal-600/50 px-4 py-2 transition-all border-double transition ease-in-out delay-150 bg-cor_principal-500 hover:-translate-y-1 hover:scale-110 hover:bg-cor_principal-700 duration-300 duration-200 '+props.className}>
     {props.text}
     </button>
   )

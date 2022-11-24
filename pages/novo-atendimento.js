@@ -110,7 +110,7 @@ export default function Cadastro(){
         </SelectInput>
       </div>
     </div>
-    
+
     <div className="w-full text-last mt-5">
       <ButtonDefault text="Adicionar ao cadastro "/>
     </div>

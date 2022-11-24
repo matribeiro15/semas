@@ -12,7 +12,7 @@ export default function CardClient(props){
     }
     return (
       <Link href={props_c.link}>
-        <span className="text-lg flex items-center gap-[8px] bg-cor_principal-800 px-3 border border-transparent rounded-full cursor-pointer hover:bg-cor_principal-600 transition duration-300 hover:border-white">
+        <span className="text-lg flex items-center gap-[7px] bg-cor_principal-800 px-3 border border-transparent rounded-full cursor-pointer hover:bg-cor_principal-600 transition duration-300 hover:border-white">
           <Ic className=""/>
           <font>{props_c.text}</font>
         </span>

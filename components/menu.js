@@ -1,5 +1,6 @@
 import {FaUserPlus,FaRegUserCircle,FaChartPie,FaPaste,FaSignInAlt,FaFileImport,FaFileInvoiceDollar,FaHome} from 'react-icons/fa';
 import Link from 'next/link';
+import PrefeituraLogo from '../components/prefeitura-logo.js'
 export default function Menu(props)
 {
 
@@ -26,6 +27,13 @@ export default function Menu(props)
   }
   return (
     <div className="p-5 ">
+    <div className="flex flex-col justify-between items-center p-1 mb-4">
+      <div className="flex gap-[5px] items-end mt-1">
+        <PrefeituraLogo/>
+        <h1 className="text-cor_principal-700 text-6xl font-bold font-[Saudagar]">SEMAS</h1>
+      </div>
+      <h1 className="text-cor_principal-600 text-1xl">Secretaria Municipal de Assistência Social</h1>
+    </div>
       <div className="menu">
         <div className="header">
           <h3>Menu</h3>
@@ -41,10 +49,7 @@ export default function Menu(props)
           </ul>
         </div>
       </div>
-      <div className="flex flex-col justify-between items-center ">
-        <h1 className="text-cor_principal-500 text-6xl font-bold ">SEMAS</h1>
-        <h1 className="text-cor_principal-400 text-base">Secretaria Municipal de Assistência Social</h1>
       </div>
-    </div>
+
   );
 }

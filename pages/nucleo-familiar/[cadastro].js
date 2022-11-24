@@ -2,7 +2,6 @@ import {FormDefault,AlternativeForm,InputText,ButtonDefault,SelectInput,Checkbox
 import PageDefault from '../../components/pageDefault.js'
 import CardFamily from '../../components/cards/cardFamily.js'
 import Leh from '../../controller/leh.js'
-import LogoPrefeitura from '../../components/logo-prefeitura.js'
 import Link from "next/link"
 import Menu from '../../components/menu.js'
 import {setMask,checkUserLogin} from '../../controller/utils.js'
@@ -74,11 +73,11 @@ return (
               })
             }
           </div>
-          <InputText fatherClassName="flex-5 min-w-[230px]" withLabel={true} name="nome" label="Nome" className="rounded-xl"/>
-          <InputText fatherClassName="flex-1 min-w-[230px]" withLabel={true} name="data_nasc" type="date" label="Data de Nascimento" className="rounded-xl"/>
-          <InputText fatherClassName="flex-1 min-w-[230px]" withLabel={true} name="cpf" mask="ddd.ddd.ddd-dd" label="CPF" className="rounded-xl"/>
-          <InputText fatherClassName="flex-1 min-w-[230px]" withLabel={true} name="nis" label="NIS" className="rounded-xl"/>
-          <SelectInput fatherClassName="flex-1 min-w-[230px]" withLabel={true} name="parentesco" label="Parentesco" className="rounded-xl">
+          <InputText fatherClassName="flex-5 min-w-[230px]" withLabel={true} name="nome" label="Nome" className="rounded"/>
+          <InputText fatherClassName="flex-1 min-w-[230px]" withLabel={true} name="data_nasc" type="date" label="Data de Nascimento" className="rounded"/>
+          <InputText fatherClassName="flex-1 min-w-[230px]" withLabel={true} name="cpf" mask="ddd.ddd.ddd-dd" label="CPF" className="rounded"/>
+          <InputText fatherClassName="flex-1 min-w-[230px]" withLabel={true} name="nis" label="NIS" className="rounded"/>
+          <SelectInput fatherClassName="flex-1 min-w-[230px]" withLabel={true} name="parentesco" label="Parentesco" className="rounded">
             <option value="">Selecione Uma Opção</option>
             <option value="Cônjuge">Cônjuge</option>
             <option value="Filho(a)">Filho(a)</option>
@@ -95,7 +94,7 @@ return (
           </SelectInput>
           <div className="flex-1 flex items-center">
             <div className="text-cor_principal-700 font-bold text-2xl mr-2 pt-5 pl-7">R$</div>
-            <InputText fatherClassName="flex-auto" withLabel={true} name="renda_individual" typeData="Float" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Renda Individual" className="rounded-xl"/>
+            <InputText fatherClassName="flex-auto" withLabel={true} name="renda_individual" typeData="Float" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Renda Individual" className="rounded"/>
           </div>
           <input type="hidden" name="cadastro" value={cadastro}/>
           <div className="w-full text-center text-color-white py-3 redonded-ful ">
@@ -104,7 +103,7 @@ return (
         </FormDefault>
         <FormDefault onSuccess={success} onError={error} API="clients/update" noSendToken={true} noSendHash={true} resetAfterSend={false} className="max-w-[1000px] w-full flex flex-wrap gap-3 justify-center mx-auto self-center items-center justify-center">
           <h1 className="text-black text-2xl font-medium font-mono py-4  w-full text-center mb-3">Renda Familiar</h1>
-          <div className="rounded-xl border p-2 w-full flex flow-wrap">
+          <div className="rounded border p-2 w-full flex flow-wrap">
             <div>
               <h2 className="font-bold text-sm text-cor_principal-700 mb-3">Recebe algum beneficio?</h2>
               <div className="flex gap-x-[30px] gap-y-[8px] justify-center flex-wrap">
@@ -118,20 +117,20 @@ return (
             </div>
             <div className="flex items-center min-w-[300px]">
               <div className="text-cor_principal-700 font-bold text-2xl mr-2 pt-5">R$</div>
-              <InputText fatherClassName="flex-auto" withLabel={true} name="total_beneficios" typeData="Float" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Total em Benefícios Recebidos" className="rounded-xl"  required={false}/>
+              <InputText fatherClassName="flex-auto" withLabel={true} name="total_beneficios" typeData="Float" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Total em Benefícios Recebidos" className="rounded"  required={false}/>
             </div>
           </div>
           <h1 className="text-black text-2xl font-medium font-mono py-4   w-full text-center mb-3 ">Dados Do cadastro</h1>
-          <SelectInput  fatherClassName="flex-3" withLabel={true} name="forma_acesso" label="Forma de Acesso" className="rounded-xl">
+          <SelectInput  fatherClassName="flex-3" withLabel={true} name="forma_acesso" label="Forma de Acesso" className="rounded">
             <option value="">Selecione Uma Opção</option>
             <option value="Espontanea">Espontânea</option>
             <option value="encaminhada">Encaminhada</option>
             <option value="Busca ativa">Busca ativa</option>
             <option value="abordagem social">Abordagem Social</option>
           </SelectInput>
-          <InputText fatherClassName="flex-1" withLabel={true} name="observacao_cadastro" label="Observação de cadastro" className="rounded-xl"  required={false}/>
-          <InputText fatherClassName="flex-1" withLabel={true} name="ponto_coleta" label="Ponto de coleta(beneficios)" className="rounded-xl"  required={false}/>
-          <SelectInput fatherClassName="flex-0" withLabel={true} name="local_cadastro"  label="Local onde foi feito o cadastro" className="rounded-xl">
+          <InputText fatherClassName="flex-1" withLabel={true} name="observacao_cadastro" label="Observação de cadastro" className="rounded"  required={false}/>
+          <InputText fatherClassName="flex-1" withLabel={true} name="ponto_coleta" label="Ponto de coleta(beneficios)" className="rounded"  required={false}/>
+          <SelectInput fatherClassName="flex-0" withLabel={true} name="local_cadastro"  label="Local onde foi feito o cadastro" className="rounded">
             <option value="">Selecione Uma Opção</option>
             {
               instituicoes.map((el,id)=>{

@@ -1,5 +1,5 @@
 import {FormDefault,InputText,ButtonDefault} from  "../components/du-objects.js"
-import LogoPrefeitura from '../components/logo-prefeitura.js'
+import PrefeituraLogo from '../components/prefeitura-logo.js'
 import Link from "next/link"
 import Leh from '../controller/leh.js'
 import Cookies from 'universal-cookie';
@@ -28,8 +28,9 @@ export default function Login(){
   }
 
   return (
+
     <div className="w-full flex flex-row min-h-screen">
-      <div className="flex-auto flex flex-col items-end justify-center p-3">
+      <div className="flex-auto flex flex-col items-end justify-center p-2">
         <h1 className="text-cor_principal-600 text-4xl mb-5">Login</h1>
         <FormDefault API="users/login" onError={erro}  onSuccess={success} className="w-full flex flex-col justify-center items-end">
           <InputText fatherClassName="w-full flex flex-col items-end" name="email" label="Email" className="max-w-[500px] w-full text-right rounded-t-xl"/>
@@ -51,10 +52,20 @@ export default function Login(){
           </Link>
         </div>
       </div>
-      <div className="flex-auto w-full flex flex-col items-center justify-center max-w-[500px] bg-cor_principal-600">
-        <h1 className="text-slate-100 text-7xl font-bold">SEMAS</h1>
-        <LogoPrefeitura/>
-      </div>
+      <div className="flex-auto w-full flex flex-col items-center justify-center max-w-[500px] bg-cor_principal-700">
+        <h1 className="text-slate-100 text-7xl font-bold font-[Saudagar]">SEMAS</h1>
+          <h2 className="text-2xl  text-slate-100  text-center font-bold mb-[-2px]">Secretaria Municipal de </h2>
+            <h3 className="text-2xl text-slate-100 text-center font-bold mb-4">Assistência Social</h3>
+            <div className="flex flex-col justify-between items-center p-1 mb-4">
+          </div>
+
+
+      <div className=" px-2 py-1 rounded-r-lg flex  items-center flex-col">
+        <PrefeituraLogo/>
+         <h1 className="text-slate-100 text-sm-3">Prefeitura Municipal</h1>
+          <h2 className="text-slate-100 text-center text-sm-3 ">de Vilhena</h2>
+        </div>
+       </div>
     </div>
   )
 }

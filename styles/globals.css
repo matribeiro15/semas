@@ -7,6 +7,10 @@
   font-family: 'fontDaLeh';
 }
 */
+@font-face {
+  src:url('/fonts/saudagar.ttf');
+  font-family: 'Saudagar';
+}
 :root{
   --color_1:#391a6e;
   --color_2:#7c3aed;
