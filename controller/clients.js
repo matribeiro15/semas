@@ -53,6 +53,9 @@ Cidadao.new = async function(dados){
   if(dados.data_nasc && typeof dados.data_nasc == 'string'){
     dados.data_nasc = new Date(dados.data_nasc);
   }
+  if(dados.cep){
+    dados.cep = dados.cep.replaceAll('-','');
+  }
 
   var resp = await prisma.cadastro_usuario.create({
     data:dados
@@ -87,6 +90,9 @@ Cidadao.newChild = async function(dados){
         delete dados[x];
       }
     }
+  }
+  if(dados.cpf){
+    dados.cpf = dados.cpf.replaceAll('.','').replaceAll('-','');
   }
   if(dados.data_nasc){
     dados.data_nasc = new Date(dados.data_nasc);

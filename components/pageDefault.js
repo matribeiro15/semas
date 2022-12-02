@@ -34,7 +34,7 @@ export default function PageDefault(props){
       <HeadLeh>
         <title>Carregando...</title>
       </HeadLeh>
-      <div className="flex gap-x-{size}">
+      <div className=" flex gap-x-{size} ">
         <Menu loader={true}/>
         <div className="flex flex-col flex-auto pr-7">
           <h2 className="loadingBG w-full text-left text-xl font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4 flex items-center">&nbsp;</h2>
@@ -45,7 +45,7 @@ export default function PageDefault(props){
     </>
   )
 
-  if(props.checkUser && !user){
+  if((props.checkUser && !user) || props.loading){
     return loading;
   }
   return (
@@ -53,10 +53,10 @@ export default function PageDefault(props){
     <HeadLeh>
       <title>{props.title}</title>
     </HeadLeh>
-    <div className="flex gap-x-{size}">
+    <div className=" bg-gray-50 flex gap-x-{size}">
       <Menu/>
 
-      <div className="flex flex-col flex-auto pr-7">
+      <div className=" bg-gray-50 flex flex-col flex-auto pr-7">
         <h2 className="w-full text-left text-xl font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4 flex items-center"><Icon className="mr-3 text-white"/> {props.label}</h2>
         {props.children}
       </div>

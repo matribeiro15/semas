@@ -6,10 +6,20 @@ import {instituicoes} from '../instituicoes.js'
 import {atendimentos} from '../atendimentos.js'
 import Leh from '../controller/leh.js'
 import PageDefault from '../components/pageDefault.js'
-
-
+import Atendimento from "../components/novo-atendimento/atendimentos.js"
+import Acompanhamentos from "../components/novo-atendimento/acompanhamentos.js"
+import Beneficios from "../components/novo-atendimento/beneficios.js"
+import Encaminhamentos from "../components/novo-atendimento/encaminhamentos.js"
 export default function Cadastro(){
+  var success = function(e){
+    notification('Sucesso!','Atendimento Adicionado com sucesso!','good');
+    Router.push('/novo atendimento/'+e.data.hash)
+  }
+  var error = async function(e,a){
+    notification('Erro!',e.response.data.msg,'bad');
+  }
   const [client,setClient] = useState(false);
+  const [activeScreen,setActiveScreen] = useState('atendimento')
 
   const router = useRouter()
   const buscaClient = async ()=>{
@@ -54,66 +64,31 @@ export default function Cadastro(){
     });
   }
 
+  const telaAtiva = function(){
+    if(activeScreen == 'atendimento'){
+      return <Atendimento atendimentos={atendimentos}/>
+    }else if(activeScreen == 'acompanhamento'){
+      return <Acompanhamentos/>
+    }else if(activeScreen == 'encaminhamento'){
+      return <Encaminhamentos instituicoesList={instituicoes}/>
+    }else if(activeScreen == 'beneficio'){
+      return <Beneficios/>
+    }
+  }
+
   return (
 <PageDefault title="Novo Atendimento | SEMAS" checkUser={true} label="Novo Atendimento" icon="FaFileImport">
-  <FormDefault API="users/complete" id="formCad" onSuccess={success} resetAfterSend={false} className="w-full flex flex-col justify-center items-stretch max-w-[1200px]">
+  <FormDefault API="users/complete" id="formCad" onSuccess={success} resetAfterSend={false} className="w-full flex flex-col justify-center items-stretch max-w-[900px]">
     <h1 className="text-2xl text-cor_principal-900 font-bold px-4 mb-0">{client ? client.nome : ''}</h1>
     <h1 className="text-md text-cor_principal-900 font-bold px-4 mb-7">{client ? 'CPF '+setMask('ddd.ddd.ddd-dd',client.cpf) : ''} {client ? ' |  NIS '+client.nis : ''}</h1>
-    <div className="rounded-xl flex-2 flex-col border pb-3">
-      <div className="w-full flex flex-wrap gap-2 mx-auto justify-center items-stretch bg_color_2 text-white">
-        <SelectInput  fatherClassName="" withLabel={true} name="atendimentos_simplificados" label="Atendimentos Simplificados" className="rounded-xl min-w-[300px] flex flex-col items-last justify-center text-cor_principal-700 border p-2  cursor-pointer text-center text-m w-[150px] h-[40px] hover:shadow-md transition " required={false}>
-          <option value="">Selecione Uma Opção</option>
-          <optgroup label="PSB">
-            <option value="Orientação Social">Orientação Social</option>
-            <option value="Inscrição em Curso">Inscrição em Curso</option>
-            <option value="Inscrição SCFV">Inscrição SCFV</option>
-          </optgroup>
-          <optgroup label="PSE-Média">
-            <option value="Oreintação Social">Orientação Social</option>
-          </optgroup>
-        </SelectInput>
-        <InputText fatherClassName="" withLabel={true} name="atendimentos_tecnicos" label="Atendimentos Técnicos" className=" flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[330px] h-[40px] hover:shadow-md transition" list="procedimentos_list" required={false}/>
-        <datalist id="procedimentos_list">{list()}</datalist>
-
-        <SelectInput  fatherClassName="" withLabel={true} name="Beneficios" label="Benefícios" className="flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[320px] h-[40px] hover:shadow-md transition">
-          <option value="">Selecione Uma Opção</option>
-          <option value="BENEFÍCIO EVENTUAL: AUXÍLIO NATALIDADE">BENEFÍCIO EVENTUAL: AUXÍLIO NATALIDADE</option>
-          <option value="BENEFÍCIO EVENTUAL: AUXÍLIO FUNERAL">BENEFÍCIO EVENTUAL: AUXÍLIO FUNERAL</option>
-          <option value="BENEFÍCIO EVENTUAL: PASSGAGEM">BENEFÍCIO EVENTUAL: PASSGAGEM</option>
-          <option value="MARMITEX">MARMITEX</option>
-          <option value="NUTRI VIDA:LEITE">NUTRI VIDA: LEITE</option>
-          <option value="MAMÃE CHEGUEI:AUXÍLIO NATALIDADE">MAMÃE CHEGUEI:AUXÍLIO NATALIDADE</option>
-        </SelectInput>
-        <SelectInput  fatherClassName="" withLabel={true} name="acompanhamentos" label="Acompanhamentos" className="rounded-xl flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[290px] h-[40px] hover:shadow-md transition" required={false}>
-          <option value="">Selecione Uma Opção</option>
-          <optgroup label="PSB">
-            <option value="PAIF">PAIF</option>
-            <option value="SPSB DOMICILIAR">SPSB DOMICILIAR</option>
-            <option value="SCFV">SCFV</option>
-          </optgroup>
-          <optgroup label="PSE-Média">
-            <option value="PAEFI">PAEFI</option>
-            <option value="SPSAC MEDIDAS SOCIOEDUCATIVAS (LA)">SPSAC MEDIDAS SOCIOEDUCATIVAS (LA)</option>
-            <option value="SPSAC MEDIDAS SOCIOEDUCATIVAS (PSC)">SPSAC MEDIDAS SOCIOEDUCATIVAS (PSC)</option>
-          </optgroup>
-          <optgroup label="PSE-Alta">
-            <option value="ACOLHIMENTO INSTITUCIONAL">ACOLHIMENTO INSTITUCIONAL</option>
-          </optgroup>
-        </SelectInput>
-        <SelectInput fatherClassName="" withLabel={true} name="local_onde_foi_feito_o_cadastro"  label="Onde foi feito o cadastro?" className="rounded-xl flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded-xl cursor-pointer text-center text-m w-[180px] h-[40px] hover:shadow-md transition"required={false} >
-          <option value="">Selecione Uma Opção</option>
-          {
-            instituicoes.map((el,id)=>{
-              return (<option value={el} key={'opt-instituicoes--'+id}>{el}</option>)
-            })
-          }
-        </SelectInput>
-      </div>
+    <div>
+    <button className="m-1 px-3 bg-cor_principal-700 text-white" onClick={(e)=>{e.preventDefault(); setActiveScreen('atendimento')}}>Atendimento</button>
+    <button className="m-1 px-3 bg-cor_principal-700 text-white" onClick={(e)=>{e.preventDefault(); setActiveScreen('acompanhamento')}}>Acompanhamento</button>
+    <button className="m-1 px-3 bg-cor_principal-700 text-white" onClick={(e)=>{e.preventDefault(); setActiveScreen('encaminhamento')}}>Encaminhamento</button>
+    <button className="m-1 px-3 bg-cor_principal-700 text-white" onClick={(e)=>{e.preventDefault(); setActiveScreen('beneficio')}}>Beneficio</button>
     </div>
 
-    <div className="w-full text-last mt-5">
-      <ButtonDefault text="Adicionar ao cadastro "/>
-    </div>
+    {telaAtiva()}
   </FormDefault>
 </PageDefault>
 

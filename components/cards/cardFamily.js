@@ -18,7 +18,7 @@ export default function CardFamily(props){
       <Cell label="NIS" content={props.dados.nis ? setMask('ddddddddd',props.dados.nis) : '-----'} className="border-x"/>
       <Cell label="Renda Individual" content={props.dados.renda_individual.toLocaleString('pt-BR',{style:"currency",currency:"BRL"})}/>
       <div className="flex items-center pr-2">
-        <span className="cursor-pointer hover:text-neutral-200 transition"><MdDelete className="text-2xl"/></span>
+        <span className="cursor-pointer hover:text-neutral-200 transition onClick"><MdDelete className="text-2xl"/></span>
       </div>
     </div>
   )

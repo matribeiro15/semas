@@ -194,7 +194,6 @@ function InputText(props){
       });
     }
   }
-
   var maskInput;
   if(props.mask !== undefined){
     maskInput = function (e){
@@ -388,6 +387,4 @@ function Checkbox (props){
     </div>
   )
 }
-
-
-export{FormDefault, InputText,InputPassword,ButtonDefault, SelectInput,AlternativeForm,LoaderForm,Checkbox}
+export{FormDefault,InputText,InputPassword,ButtonDefault,SelectInput,AlternativeForm,LoaderForm,Checkbox}

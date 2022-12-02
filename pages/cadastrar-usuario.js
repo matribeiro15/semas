@@ -4,6 +4,7 @@ import HeadLeh from '../components/head.js'
 import Menu from '../components/menu.js'
 import Link from "next/link"
 import Router from "next/router"
+import SelectMap from '../components/selectMap.js'
 import {FaUserPlus} from 'react-icons/fa';
 import PageDefault from '../components/pageDefault.js'
 export default function Ficha(){
@@ -29,15 +30,8 @@ export default function Ficha(){
                 <InputText fatherClassName="flex-auto" withLabel={true} name="indentificacao_estrangeira" label="Indentificação estrangeira" className=" rounded"  required={false}/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="telefone_celular" mask="(dd)ddddd-dddd" label="Telefone/Celular" className=" rounded"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="telefone_celular_alternativo" mask="(dd)ddddd-dddd" label="Telefone/celular Alternativo" className=" rounded" required={false}/>
-          <h1 className="text-black text-2xl font-medium font-mono  text-condensed w-full text-center  py-3">Dados Pessoais</h1>
-
-
-                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="natural_de" label="Local de nascimento " className="rounded" required={false}>
-                  <option value="">Selecione municipio-estado</option>
-                    <option value="Vilhena">Vilhena</option>
-
-
-                  </SelectInput>
+            <h1 className="text-black text-2xl font-medium font-mono  text-condensed w-full text-center  py-3">Dados Pessoais</h1>
+                <SelectMap name="natural_de" label="Local de Nascimento"/>
 
                <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_civil" label="Estado civil" className="rounded">
                     <option value="">Selecione Uma Opção</option>
@@ -55,11 +49,11 @@ export default function Ficha(){
                 <InputText fatherClassName="flex-auto" withLabel={true} name="data_nasc" type="date" label="Data de nascimento" className="rounded "/>
                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="escolaridade" label="Escolaridade" className="rounded ">
                     <option value="">Selecione Uma Opção</option>
-                    <option value="Ensino médio Completo">Ensino médio Completo</option>
-                    <option value="Ensino médio incompleto">Ensino médio incompleto</option>
                     <option value="Não alfabetizado">Não alfabetizado</option>
-                    <option value="Fundamental completo">Fundamental completo</option>
                     <option value="Fundamental incompleto">Fundamental incompleto</option>
+                    <option value="Fundamental completo">Fundamental completo</option>
+                    <option value="Ensino médio completo">Ensino médio completo</option>
+                    <option value="Ensino médio incompleto">Ensino médio incompleto</option>
                     <option value="Ensino Superior incompleto">Ensino Superior incompleto</option>
                     <option value="Ensino Superior completo">Ensino Superior completo</option>
                  </SelectInput>
@@ -97,7 +91,7 @@ export default function Ficha(){
                     <option value="Cedido">Cedido</option>
                     <option value="Não se Aplica">Não se aplica</option>
                   </SelectInput>
-                <InputText fatherClassName="flex-2" withLabel={true} name="numero_de_comodos" mask="ddd" label="Número de comodos" className="rounded"/>
+                <InputText fatherClassName="flex-2" withLabel={true} name="numero_de_comodos" mask="ddd" label="Número de comodos" className="rounded" required={false}/>
                   <SelectInput fatherClassName="flex-auto" withLabel={true} name="tempo_de_moradia"   label="Tempo de moradia" className="rounded">
                   <option value="">Selecione Uma Opção</option>
                   <option value="Menos de 1 mês">Menos de 1 mês </option>
@@ -111,14 +105,14 @@ export default function Ficha(){
 
                   </SelectInput>
 
-                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="edificada_em" label="Edificada em:" className="rounded" >
+                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="edificada_em" label="Edificada em:" className="rounded" required={false}>
                     <option value="">Selecione Uma Opção</option>
                     <option value="Madeira">Madeira</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Mista">Mista</option>
                     <option value="Não se Aplica">Não se aplica</option>
                   </SelectInput>
-                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_de_conservacao" label="Estado de Conservação" className="rounded " >
+                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_de_conservacao" label="Estado de Conservação" className="rounded" required={false} >
                     <option value="">Selecione Uma Opção</option>
                     <option value="Bom">Bom </option>
                     <option value="Médio">Médio</option>
@@ -129,7 +123,7 @@ export default function Ficha(){
                   </SelectInput>
 
                  <div className="rounded border p-2 inline ">
-                   <h2 className="font-bold text-sm inline  text-cor_principal-700 mb-3">Saneamento Básico</h2>
+                   <h2 className="font-bold text-sm inline  text-cor_principal-700 mb-3">Saneamento Básico(Possui?)</h2>
                     <div className="flex gap-[8px] justify-center text-center" required={false}>
                        <Checkbox label="Distribuição de água potável" value="Distribuição de água potável" name="saneamento_basico" required={false}/>
                        <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento_basico" required={false}/>

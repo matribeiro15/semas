@@ -7,7 +7,15 @@ const getMyData = async function(callback){
   }
 }
 
+var moneyBRL = function(value){
+  value = parseFloat(value);
+  return value.toLocaleString('pt-BR',{style:"currency",currency:"BRL"});
+}
+
 var setMask = function(mask,text){
+  if(!text){
+    return '';
+  }
   mask = mask.split('');
   text = text.split('');
   var n = 0;
@@ -47,4 +55,4 @@ const checkUserLogin = async function(callback){
     callback(user);
   });
 }
-export {getMyData,checkUserLogin,ucwords,setMask}
+export {getMyData,checkUserLogin,ucwords,setMask,moneyBRL}

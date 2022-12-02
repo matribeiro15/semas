@@ -45,10 +45,10 @@ export default function CardClient(props){
         </div>
       </div>
       <div className="flex gap-[12px] mt-2">
-        <LinkItem link={'/atendimentos?client='+props.client.hash} text="Ver Cadastro" icon="FaRegEye"/>
+        <LinkItem link={'/ver-cadastro/'+props.client.nis} text="Ver Cadastro" icon="FaRegEye"/>
         <LinkItem link={'/novo-atendimento?client='+props.client.hash} text="Novo Atendimento" icon="FaFileImport"/>
         <LinkItem link={'/editar-usuario?client='+props.client.hash} text="Editar Cadastro" icon="FaUserEdit"/>
-        <LinkItem link={'/atendimentos?client='+props.client.hash} text="Ver Atendimentos" icon="FaThList"/>
+        <LinkItem link={'/ver-atendimentos?client='+props.client.hash} text="Ver Atendimentos" icon="FaThList"/>
       </div>
     </div>
   );

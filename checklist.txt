@@ -1,19 +1,15 @@
-pages/cadastrar-usuario.js
 
-  -lista de estados do brasil/ lista de municipio de cada estado colocar em um object e depois separar em natural de....
-
-
-
-  -pegar os dados do codigo por  familia
-  -falar com eusangela sobre as rendas percapta  por ordem
-not
-
-
-
-
-   para casa
-   - seguranca visuzualizacao de cadastros
-   - apresentacao do sistema
-   - visuzualizacao de dados
-   -faze paginas de atendimento e vizualizacao
-   -
+   para casa:
+   -colocar mapa do brasil em cadastrar@
+   -colocar valor de aluguel
+   -cedidio por quem?
+   -arrumar pular paginas
+   -arrumar botão de anexo
+   -colocar API de atendimentos
+   -colocar botton  na div
+    -atualizar paginas
+    -arrumar pagina de ver cadastro
+    -arrumar pagina de novo atendimento
+    -somar rendas no sistema
+    -colocar button no delete do nucleo_familiar
+    -

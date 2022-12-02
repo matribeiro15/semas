@@ -24,7 +24,7 @@ export default function Familiar(){
   }
 
   const success = function(){
-    // Router.push("/");
+    Router.push("/");
     notification("Sucesso!","Cadastramento Realizado com Sucesso!",'good');
   }
   const error = async function(e){
@@ -103,6 +103,7 @@ return (
         </FormDefault>
         <FormDefault onSuccess={success} onError={error} API="clients/update" noSendToken={true} noSendHash={true} resetAfterSend={false} className="max-w-[1000px] w-full flex flex-wrap gap-3 justify-center mx-auto self-center items-center justify-center">
           <h1 className="text-black text-2xl font-medium font-mono py-4  w-full text-center mb-3">Renda Familiar</h1>
+
           <div className="rounded border p-2 w-full flex flow-wrap">
             <div>
               <h2 className="font-bold text-sm text-cor_principal-700 mb-3">Recebe algum beneficio?</h2>
@@ -120,11 +121,15 @@ return (
               <InputText fatherClassName="flex-auto" withLabel={true} name="total_beneficios" typeData="Float" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Total em Benefícios Recebidos" className="rounded"  required={false}/>
             </div>
           </div>
+          <div className="flex items-center min-w-[300px]">
+            <div className="text-cor_principal-700 font-bold text-2xl mr-2 pt-5">R$</div>
+              <InputText fatherClassName="flex-auto" withLabel={true} name="renda_familiar" typeData="Float" type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label="Renda Total Familiar" className="rounded"/>
+            </div>
           <h1 className="text-black text-2xl font-medium font-mono py-4   w-full text-center mb-3 ">Dados Do cadastro</h1>
           <SelectInput  fatherClassName="flex-3" withLabel={true} name="forma_acesso" label="Forma de Acesso" className="rounded">
             <option value="">Selecione Uma Opção</option>
-            <option value="Espontanea">Espontânea</option>
-            <option value="encaminhada">Encaminhada</option>
+            <option value="Espontânea">Espontânea</option>
+            <option value="Encaminhada">Encaminhada</option>
             <option value="Busca ativa">Busca ativa</option>
             <option value="abordagem social">Abordagem Social</option>
           </SelectInput>
@@ -138,10 +143,9 @@ return (
               })
             }
           </SelectInput>
-          <input type="hidden" name="user" value={cadastro}/>
-          <div className="w-full text-center text-last object-left-top mt-8  ">
-            <ButtonDefault text="Cadastrar Familia"/>
-          </div>
+          <div className="text-center mt-8 w-full">
+           <ButtonDefault text="Salvar"/>
+         </div>
         </FormDefault>
       </div>
     </div>
