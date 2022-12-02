@@ -13,3 +13,15 @@
     -somar rendas no sistema
     -colocar button no delete do nucleo_familiar
     -
+
+
+
+
+para o trabalho:
+-arrumar os buttons
+-tirar os s dos atentimentos
+-criar pagina de lista de espera
+-criar pagina de relatorio relatorio tecnico
+-ver os atendimento estao corretos
+-
+-

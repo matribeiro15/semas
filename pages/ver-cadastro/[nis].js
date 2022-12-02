@@ -99,8 +99,8 @@ const client = {
 
 return(
 <PageDefault title="Ver cadastro | SEMAS" checkUserLogin={true} loading={!client} callbackUser={getUser} label="Cadastro de triagem Social">
-  <div className="rounded border  p-1 bg-zinc-50 overscroll-none inline rounded-xl ">
-    <div className=" rounded-md p-3  flex flex-wrap rounded  p-2 inline">
+  <div className=" whitespace-normal rounded border  p-1 bg-zinc-50 overscroll-none inline rounded-xl  whitespace-pre-line ">
+    <div className=" rounded-md p-3 flex flex-wrap rounded  p-2 inline">
       <h1 className="text-black text-2xl  font-medium font-mono flex flex-col items-center justify-center p-3 py-5">Indentificação</h1>
         <div className="max-w-[800px] flex-auto  bg-white w-full flex flex gap-2 mx-auto items-stretch">
           <Cell label="Nome Responsável" text={client.nome}/>
@@ -108,7 +108,7 @@ return(
           <Cell label="NIS" text={client.nis}/>
           <Cell label="RG" text={client.rg}/>
         </div>
-      <div className="max-w-[800px]  bg-white border w-full flex flex gap-2 mx-auto items-stretch">
+      <div className="max-w-[800px]   whitespace-pre-line bg-white border w-full flex flex gap-2 mx-auto items-stretch">
         <Cell label="Orgão Expedidor" text={client.orgao_expedidor}/>
         <Cell label="Expediação" text={(new Date(client.expedicao)).toLocaleDateString("pt-BR")}/>
         <Cell label="Indentificação estrangeira" text={client.indentificacao_estrangeira}/>
