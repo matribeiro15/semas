@@ -11,6 +11,7 @@ export default async function handler(req, res) {
     user= await Users.checkToken(token,ip);
   }
   if(user){
+    console.log(req.body);
     var dados = await Cidadao.get(req.body);
     if(!dados){
       dados = [];

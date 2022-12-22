@@ -109,6 +109,18 @@ Cidadao.newChild = async function(dados){
     return false;
   }
 }
+Cidadao.removeChild = async (id)=>{
+  var result = await prisma.nucleo_familiar.delete({
+    where:{
+      "id":id
+    }
+  });
+  if(result){
+    return true;
+  }else{
+    return false;
+  }
+}
 
 Cidadao.get = async (wr)=>{
   try {
@@ -127,6 +139,26 @@ Cidadao.get = async (wr)=>{
     return false;
   }
 }
+
+
+Cidadao.getChild = async (wr)=>{
+
+  try {
+    var cid = await prisma.nucleo_familiar.findFirst({
+      where:wr
+    });
+    if(cid){
+      return cid;
+    }else{
+      return false;
+    }
+  } catch (e) {
+    // console.error(e);
+    return false;
+  }
+}
+
+
 Cidadao.updateBasic = async (dados,user)=>{
   var allow = [
     'forma_acesso',

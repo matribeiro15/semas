@@ -7,13 +7,40 @@ import Router from "next/router"
 import SelectMap from '../components/selectMap.js'
 import {FaUserPlus} from 'react-icons/fa';
 import PageDefault from '../components/pageDefault.js'
+import {useState} from 'react'
+
 export default function Ficha(){
+  const [tipoDeImovelSelecionado,setTipoDeImovelSelecionado] = useState('');
   var success = function(e){
     notification('Sucesso!','Usuário cadastrado com sucesso!','good');
     Router.push('/nucleo-familiar/'+e.data.hash)
   }
   var error = async function(e,a){
     notification('Erro!',e.response.data.msg,'bad');
+  }
+  const TipoDeImovel = function(p){
+    const [sufix,setSufix] = useState('');
+    if(p.type.substring(0,7) == 'Alugado'){
+      const altRental = function(e){
+        var vl = parseFloat(e.target.value);
+        if(vl > 0){
+          setSufix(':'+vl);
+        }else{
+          setSufix('');
+        }
+      }
+      return (
+        <>
+        <InputText fatherClassName="flex-auto" withLabel={true} onChange={altRental} type="number" step="0.01" min="0" onBlur={(e)=>{ e.target.value = parseFloat(e.target.value).toFixed(2); }} label={"Valor do Aluguel R$"} className="rounded" required/>
+        <input type="hidden" name="tipo_de_imovel" value={p.type+sufix}/>
+        </>
+      );
+    }
+    return (
+      <>
+        <input type="hidden" name="tipo_de_imovel" value={p.type}/>
+      </>
+    )
   }
   return (
       <PageDefault checkUser={true} title="Cadastrar Usuario| SEMAS" label="Cadastrar Usuario" icon="FaUserPlus">
@@ -26,13 +53,12 @@ export default function Ficha(){
                 <InputText fatherClassName="flex-auto" withLabel={true} name="orgao_expedidor" label="Orgão Expeditor" className="rounded" />
                 <InputText fatherClassName="flex-auto" withLabel={true} name="expedicao" type="date" label="Expediação" className="rounded"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="cpf" mask="ddd.ddd.ddd-dd" label="CPF" className="rounded"/>
-                <InputText fatherClassName="flex-auto" withLabel={true} name="nis" label="NIS" className=" rounded "/>
+                <InputText fatherClassName="flex-auto" withLabel={true} name="nis" label="NIS" className=" rounded " required={false}/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="indentificacao_estrangeira" label="Indentificação estrangeira" className=" rounded"  required={false}/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="telefone_celular" mask="(dd)ddddd-dddd" label="Telefone/Celular" className=" rounded"/>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="telefone_celular_alternativo" mask="(dd)ddddd-dddd" label="Telefone/celular Alternativo" className=" rounded" required={false}/>
             <h1 className="text-black text-2xl font-medium font-mono  text-condensed w-full text-center  py-3">Dados Pessoais</h1>
                 <SelectMap name="natural_de" label="Local de Nascimento"/>
-
                <SelectInput fatherClassName="flex-auto" withLabel={true} name="estado_civil" label="Estado civil" className="rounded">
                     <option value="">Selecione Uma Opção</option>
                     <option value="Solteiro">Solteiro(a)</option>
@@ -81,30 +107,31 @@ export default function Ficha(){
                     <option value="Rural">Rural</option>
                     <option value="Urbana">Urbana</option>
                     <option value="Distrito">Distrito</option>
+                    <option value="Não se Aplica">Não se aplica</option>
                  </SelectInput>
                 <InputText fatherClassName="flex-auto" withLabel={true} name="complemento" label="Complemento" className="rounded"  required={false}/>
              <h1 className="text-black text-2xl font-medium font-mono  w-full text-center  py-3">Tipo de Habitação</h1>
-                 <SelectInput fatherClassName="flex-auto" withLabel={true} name="tipo_de_imovel" label="Tipo de Imóvel" className="rounded">
-                    <option value="">Selecione Uma Opção</option>
-                    <option value="Alugado">Alugado</option>
-                    <option value="Próprio">Próprio</option>
-                    <option value="Cedido">Cedido</option>
-                    <option value="Não se Aplica">Não se aplica</option>
-                  </SelectInput>
-                <InputText fatherClassName="flex-2" withLabel={true} name="numero_de_comodos" mask="ddd" label="Número de comodos" className="rounded" required={false}/>
-                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="tempo_de_moradia"   label="Tempo de moradia" className="rounded">
+                <SelectInput fatherClassName="flex-auto" withLabel={true} value={tipoDeImovelSelecionado} onChange={(e)=>{setTipoDeImovelSelecionado(e.target.value);}} label="Tipo de Imóvel" className="rounded">
                   <option value="">Selecione Uma Opção</option>
-                  <option value="Menos de 1 mês">Menos de 1 mês </option>
-                  <option value="Mais de 1 mês até 6 meses">Mais de 1 mês até 6 meses </option>
-                  <option value="Mais de 6 meses até 1 ano">Mais de 6 meses até 1 ano</option>
-                  <option value="1 ano até 3 anos">1 ano até 3 anos</option>
-                  <option value="3 anos até 10 anos">3 anos até 10 anos</option>
-                  <option value="10 anos até 20 anos">10 anos até 20 anos  </option>
+                  <option value="Alugado">Alugado</option>
+                  <option value="Próprio">Próprio</option>
+                  <option value="Financiada">Finaciada</option>
+                  <option value="Cedido">Cedido</option>
+                  <option value="Não se Aplica">Não se aplica</option>
+                </SelectInput>
+                <TipoDeImovel type={tipoDeImovelSelecionado}/>
+                <InputText fatherClassName="flex-2" withLabel={true} name="numero_de_comodos" mask="ddd" label="Número de comodos" className="rounded" required={false}/>
+                  <SelectInput fatherClassName="flex-auto" withLabel={true} name="tempo_de_moradia"   label="Tempo de moradia" className="rounded" required={false}>
+                  <option value="">Selecione Uma Opção</option>
+                  <option value="Até 1 mês">Até de 1 mês</option>
+                  <option value="Entre 1 mês á 6 meses">Entre 1 mês á 6 meses</option>
+                  <option value="Entre 6 meses á 1 ano">Entre 6 meses á 1 ano</option>
+                  <option value="1 ano á 3 anos">1 ano á 3 anos</option>
+                  <option value="3 anos á 10 anos">3 anos á 10 anos</option>
+                  <option value="10 anos á 20 anos">10 anos á 20 anos</option>
                   <option value="20 anos ou mais">20 anos ou mais</option>
                   <option value="Desde o nascimento">Desde o nascimento</option>
-
                   </SelectInput>
-
                   <SelectInput fatherClassName="flex-auto" withLabel={true} name="edificada_em" label="Edificada em:" className="rounded" required={false}>
                     <option value="">Selecione Uma Opção</option>
                     <option value="Madeira">Madeira</option>
@@ -121,7 +148,6 @@ export default function Ficha(){
                     <option value="Péssimo">Péssimo</option>
                     <option value="Não se Aplica">Não se aplica</option>
                   </SelectInput>
-
                  <div className="rounded border p-2 inline ">
                    <h2 className="font-bold text-sm inline  text-cor_principal-700 mb-3">Saneamento Básico(Possui?)</h2>
                     <div className="flex gap-[8px] justify-center text-center" required={false}>
@@ -129,10 +155,9 @@ export default function Ficha(){
                        <Checkbox label="Coleta e Tratamento de Esgoto" value="Coleta e Tratamento de Esgoto" name="saneamento_basico" required={false}/>
                        <Checkbox label="Coleta de Lixo" value="Coleta de Lixo " name="saneamento_basico" required={false}/>
                        <Checkbox label="Drenagem Urbana" value="Drenagem Urbana" name="saneamento_basico" required={false}/>
+                       <Checkbox label="Não se Aplica" value="Não se Aplica" name="saneamento_basico" required={false}/>
                    </div>
                  </div>
-
-
            <div className="text-center mt-8 w-full">
             <ButtonDefault text="Proximo"/>
           </div>

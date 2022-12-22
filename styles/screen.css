@@ -1,0 +1,28 @@
+	.show-admin{
+		display: none !important;
+	}
+	.edit{
+		border:1px solid #eeeeee;
+		position: relative;
+		z-index:1;
+		background-color: white;
+		box-shadow: 0 7px 2px 1px rgba(20,20,20,0);
+		transition: all 250ms ease-in-out;
+	}
+	.edit:hover{
+		transform: scale(1.06);
+		z-index: 2;
+		box-shadow: 0 7px 2px 1px rgba(20,20,20,0.4);
+	}
+	.editing{
+		background-color: var(--light);
+		border:1px dashed var(--color_3);
+	}
+	font[contenteditable=true]{
+		background-color:#eeeeee;
+		border:1px solid #cccccc;
+		min-width: 90px;
+		display: inline-block;
+		border-radius: 3px;
+		outline: none !important;
+	}

@@ -1,4 +1,6 @@
-import {InputText,SelectInput} from "../du-objects.js"
+import {InputText,SelectInput,ButtonDefault} from "../du-objects.js"
+import {FaRegCalendarAlt}  from "react-icons/fa";
+
 
 export default function Atendimento(props){
   const labelsATD = Object.keys(props.atendimentos);
@@ -15,29 +17,31 @@ export default function Atendimento(props){
       )
     });
   }
-
-
   return (
 
-    <div className="rounded-md p-1 border border-cor_principal-700  flex flex-wrap rounded sombra-md border p-1 inline gap-1">
+    <div className="rounded    flex flex-wrap sombra-md border border-cor_principal-700 p-1 inline">
       <h1 className="text-black text-2xl font-medium font-mono py-1  w-full text-center ">Atendimentos</h1>
-        <InputText fatherClassName="flex-auto" withLabel={true} name="atendimentos_tecnicos" label="Atendimentos Técnicos" className=" flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded cursor-pointer text-center text-m w-[330px] h-[40px] hover:shadow-md transition" list="procedimentos_list" required={false}/>
+       <div className="">
+        <InputText fatherClassName="flex-1" withLabel={true} name="atendimentos_tecnicos" label="Atendimentos Técnicos" className=" flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded cursor-pointer text-center text-m w-[330px] h-[40px] hover:shadow-md transition" list="procedimentos_list" required={false}/>
           <datalist id="procedimentos_list">{list()}</datalist>
-        <SelectInput  fatherClassName="" withLabel={true} name="grupo" label="Grupo" className="flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded cursor-pointer text-center text-m w-[320px] h-[40px] hover:shadow-md transition" required={false}>
-          <option value="">Selecione Uma Opção</option>
-          <option value="PSB">PSB </option>
-          <option value="PSE-média">PSE-média</option>
-          <option value="PSE-alta">PSE-alta</option>
-        </SelectInput>
-        <SelectInput  fatherClassName="" withLabel={true} name="status" label="Status" className="flex flex-col items-last justify-center text-cor_principal-700 border p-2 rounded cursor-pointer text-center text-m w-[320px] h-[40px] hover:shadow-md transition" required={false}>
+        <InputText fatherClassName="flex-auto" withLabel={true} name="desc" label="Descrição Prévia" className="rounded"/>
+        <SelectInput fatherClassName="flex-1" withLabel={true} name="status" label="Status" className="rounded">
           <option value="">Selecione Uma Opção</option>
           <option value="Concedido">Concedido</option>
-          <option value="Indefirido">Indefirido</option>
-          <option value="Em analise">Em analise</option>
-        </SelectInput>
-        <InputText fatherClassName="flex-auto" withLabel={true} name="Decricao_atendimento" label="Decrição do atendimento" className="rounded"/>
-        <InputText fatherClassName="flex-auto" withLabel={true} name="resp_tecnico" label="Responsável Nivel Técnicos" className="rounded"/>
-      </div>
+          <option value="indefirido">indefirido</option>
+          <option value="Em Analise">Em Analise</option>
+       </SelectInput>
+       <div className="flex-col inline pr-2 m-3 py-3 rounded ">
+         <span className="cursor-pointer hover:text-neutral-200 transition items-end"><FaRegCalendarAlt className="text-4xl font-13 text-center"/>Agendar</span>
+       </div>
+       </div>
 
+        <div className="max-w-[600px] border-cor_principal-900 w-full flex flex-auto gap-7 mx-auto justify-center items-center">
+          <textarea  className="border border-cor_principal-700 w-full flex flex-auto gap-7 mx-auto justify-center items-center p-3 m-10 rounded resize"  placeholder="Relátorio Tecnico" name="relato"  required></textarea>
+        </div>
+          <div className="text-center mt-8 w-full ">
+            <ButtonDefault text="Adicionar ao cadastro"/>
+          </div>
+        </div>
   )
 }

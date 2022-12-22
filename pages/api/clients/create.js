@@ -28,7 +28,7 @@ handler.post(async (req, res)=>{
       }
       obj.data_nasc = new Date(obj.data_nasc);
       obj.expedicao = new Date(obj.expedicao);
-      obj.renda_individual = parseFloat((obj.renda_individual.replaceAll(/(R\$|\.)/g,'')).replace(',','.'))
+      obj.renda_individual = parseFloat(obj.renda_individual);
       obj.nome = ucwords(obj.nome);
       obj['user'] = user.hash;
       obj.cpf = obj.cpf.replace(/[\.\-\ a-z]/gi,'');

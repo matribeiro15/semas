@@ -5,7 +5,7 @@ import {FormDefault,InputText,SelectInput,ButtonDefault,LoaderForm} from  "../co
 import Link from "next/link"
 import Router from 'next/router';
 import PageDefault from '../components/pageDefault.js'
-export default function Home() {
+export default function FilaDeAtendimento() {
   const [results,setResults] = useState([]);
   const [nm,setNm] = useState('nome');
   const success = async function(e){
@@ -22,22 +22,22 @@ export default function Home() {
   },[])
 
   return (
-    <PageDefault title="SEMAS" checkUser={true} label="Pesquisar Usuário" icon="FaSearch">
+    <PageDefault checkUser={true} title="Fila de Atendimentos| SEMAS"   label="Fila de Atendimento" icon="FaSearch">
       <FormDefault API="clients/search" noSendToken={true} noSendHash={true} onSuccess={success} onError={err} className="">
         <div className="flex gap-[18px]">
-          <SelectInput fatherClassName="flex-[1]" onChange={(e)=>{setNm(e.target.value)}} className="rounded-md" label="Pesquisar Por" withLabel={true}>
+          <SelectInput fatherClassName="flex-[1]" onChange={(e)=>{setNm(e.target.value)}} className="rounded" label="Pesquisar Por" withLabel={true}>
             <option value="nome">Nome</option>
             <option value="rg">RG</option>
             <option value="cpf">CPF</option>
             <option value="nis">NIS</option>
           </SelectInput>
-          <InputText fatherClassName="flex-[3]" name={nm} type="search" className="rounded-md" label="Pesquisar" withLabel={true}/>
+          <InputText fatherClassName="flex-[3]" name={nm} type="search" className="rounded" label="Pesquisar" withLabel={true}/>
         </div>
         <div className="flex items-end justify-start mt-4">
           <ButtonDefault text="Buscar"/>
         </div>
       </FormDefault>
-        <FrameClientResult results={results}/>
-      </PageDefault>
+      <FrameClientResult results={results}/>
+    </PageDefault>
   )
 }

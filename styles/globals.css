@@ -216,3 +216,9 @@ gap-[8px] z-10
    -ms-user-select: none;
    user-select: none;
 }
+.textarea{
+    width: 30px;
+    border-radius: 7px;
+    position: fixed;
+    color: #cccccc;
+}

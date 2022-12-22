@@ -36,7 +36,8 @@ export default function PageDefault(props){
       </HeadLeh>
       <div className=" flex gap-x-{size} ">
         <Menu loader={true}/>
-        <div className="flex flex-col flex-auto pr-7">
+        <div className="flex flex-col flex-auto pr-5">
+
           <h2 className="loadingBG w-full text-left text-xl font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4 flex items-center">&nbsp;</h2>
           <div className="rounded-2xl loadingBG min-h-[400px]">
           </div>
@@ -56,8 +57,8 @@ export default function PageDefault(props){
     <div className=" bg-gray-50 flex gap-x-{size}">
       <Menu/>
 
-      <div className=" bg-gray-50 flex flex-col flex-auto pr-7">
-        <h2 className="w-full text-left text-xl font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4 flex items-center"><Icon className="mr-3 text-white"/> {props.label}</h2>
+      <div className=" bg-gray-50 flex flex-col flex-auto pr-5">
+        <h2 className="w-full text-left text-xl font-bold text-white bg-gradient-1 border rounded-full py-2 px-3 mt-5 mb-4 flex items-center "><Icon className="mr-3 text-white"/> {props.label}</h2>
         {props.children}
       </div>
     </div>

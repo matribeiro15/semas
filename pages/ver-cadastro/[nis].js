@@ -16,20 +16,35 @@ export default function VerCadastro(){
 
   const Nucleo = function(props){
     return (
-      <div className="max-w-[800px] flex-auto  bg-white border  w-full flex flex gap-2 mx-auto items-stretch">
-         <Cell label="Nome" text={props.dados.nome}/>
+      <div className="flex-auto w-full flex mx-auto items-stretch rounded max-w-[900px] col-3 edit flex-auto w-full flex col-3 edit p-1  mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-cor_principal-700 hover:bg-neutral-100">
+         <Cell label="Nome" className="flex-auto"  text={props.dados.nome}/>
          <Cell label="CPF" text={props.dados.cpf}/>
          <Cell label="Data de Nascimento " text={(new Date(props.dados.data_nasc)).toLocaleDateString('pt-BR')}/>
          <Cell label="NIS" text={props.dados.nis}/>
-         <Cell label="Parentesco" text={props.dados.parentesco}/>
-         <Cell label="Renda Individual" text={moneyBRL(props.dados.renda_individual)}/>
+         <Cell label="Parentesco"  text={props.dados.parentesco}/>
+         <Cell label="Renda Individual"text={moneyBRL(props.dados.renda_individual)}/>
       </div>
     );
   }
 
   const Cell = function(props){
-    return (<div className="text-1xl  text-cor_principal-900 bg-white flex-1 flex flex-col px-1 mb-1 from-cor_principal-900  fontMaster"><strong className="text-sm">{props.label}</strong><font>{props.text ? props.text : '-------------'}</font></div>)
+    return (
+      <div className={"text-lg text-cor_principal-900  flex-auto flex flex-col p-1 mb-1 from-cor_principal-800 fontMaster "+props.className}>
+        <strong className="text-sm">{props.label}</strong>
+        <font>{props.text ? props.text : '--------'}</font>
+      </div>
+    );
   }
+
+  const EditableCell = function(props){
+    return (
+      <div className={"text-lg text-cor_principal-900  flex-auto flex flex-col p-1 mb-1 from-cor_principal-800 fontMaster "+props.className}>
+        <strong className="text-sm">{props.label}</strong>
+        <input type="text" className="outline-none bg-transparent" defaultValue={props.text ? props.text : '-------------'}/>
+      </div>
+    );
+  }
+
   const getUser = function(us){
     setUser(us);
   }
@@ -95,91 +110,94 @@ const client = {
 }
 */
 
-
-
 return(
-<PageDefault title="Ver cadastro | SEMAS" checkUserLogin={true} loading={!client} callbackUser={getUser} label="Cadastro de triagem Social">
-  <div className=" whitespace-normal rounded border  p-1 bg-zinc-50 overscroll-none inline rounded-xl  whitespace-pre-line ">
-    <div className=" rounded-md p-3 flex flex-wrap rounded  p-2 inline">
-      <h1 className="text-black text-2xl  font-medium font-mono flex flex-col items-center justify-center p-3 py-5">Indentificação</h1>
-        <div className="max-w-[800px] flex-auto  bg-white w-full flex flex gap-2 mx-auto items-stretch">
-          <Cell label="Nome Responsável" text={client.nome}/>
-          <Cell label="CPF" text={setMask('ddd.ddd.ddd-dd',client.cpf)}/>
-          <Cell label="NIS" text={client.nis}/>
-          <Cell label="RG" text={client.rg}/>
-        </div>
-      <div className="max-w-[800px]   whitespace-pre-line bg-white border w-full flex flex gap-2 mx-auto items-stretch">
+
+<PageDefault title="Ver cadastro | SEMAS" checkUserLogin={true} loading={!client} callbackUser={getUser} label="Cadastro de triagem Social" className="max-w-[900px]">
+  <div className="w-100 bg-white shadow py-2 px-5 header-new position-relative protege rounded-xl shadow-cor_principal-600/50 max-w-[1000px]">
+    <h1 className="text-black text-2xl font-medium font-mono py-2  w-full text-center">Indentificação</h1>
+      <div className="max-w-[900px] col-3 edit flex-auto w-full flex col-3 edit p-1  mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-cor_principal-700 hover:bg-neutral-100">
+        <Cell label="Nome Responsável"  text={client.nome}/>
+        <Cell label="CPF" text={setMask('ddd.ddd.ddd-dd',client.cpf)}/>
+        <Cell label="NIS" text={client.nis}/>
+        <Cell label="RG" text={client.rg}/>
         <Cell label="Orgão Expedidor" text={client.orgao_expedidor}/>
-        <Cell label="Expediação" text={(new Date(client.expedicao)).toLocaleDateString("pt-BR")}/>
-        <Cell label="Indentificação estrangeira" text={client.indentificacao_estrangeira}/>
-        <Cell label="Telefone/Celular" text={client.telefone_celular}/>
-        <Cell label="Telefone/celular Alternativo" text={client.telefone_celular_alternativo}/>
       </div>
-      <div className="max-w-[800px]  bg-white border w-full flex flex gap-2 mx-auto items-stretch">
-        <Cell label="Local de nacimento" text={client.natural_de }/>
-        <Cell label="Estado Civil" text={client.estado_civil}/>
-        <Cell label="Nacionalidade" text={client.nacionalidade}/>
-        <Cell label="Data de nascimento" text={(new Date (client.data_nasc)).toLocaleDateString("pt-BR")}/>
+      <div className="max-w-[900px] flex-auto w-full   p-1 gap-auto mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-cor_principal-700 hover:bg-neutral-100">
+        <div className="max-w-[900px] flex-auto  w-full flex  p-1 gap-auto mx-auto items-stretch">
+          <Cell label="Expediação"  text={(new Date(client.expedicao)).toLocaleDateString("pt-BR")}/>
+          <Cell label="Indentificação estrangeira" text={client.indentificacao_estrangeira}/>
+          <Cell label="Telefone/Celular" text={client.telefone_celular}/>
+          <Cell label="Telefone/Celular Alternativo" text={setMask('(dd)ddddd-dddd',client.telefone_celular_alternativo)}/>
+        </div>
+        <div className="max-w-[900px] flex-auto  w-full flex  p-1 gap-auto mx-auto items-stretch">
+          <Cell label="Local de nacimento" text={client.natural_de }/>
+          <Cell label="Estado Civil" text={client.estado_civil}/>
+          <Cell label="Nacionalidade" text={client.nacionalidade}/>
+          <Cell label="Data de nascimento" text={(new Date (client.data_nasc)).toLocaleDateString("pt-BR")}/>
+        </div>
+        <div className="max-w-[900px] flex-auto  w-full flex  p-1 gap-auto mx-auto items-stretch">
+          <Cell label="Escolaridade" text={client.escolaridade}/>
+          <Cell label="Sexo" text={client.sexo}/>
+          <Cell label="Profissão Ocupação" text={client.profissao_ocupacao}/>
+          <Cell label="Renda Individual" text={moneyBRL(client.renda_individual)}/>
+        </div>
       </div>
-      <div className="max-w-[800px] flex-auto  bg-white border w-full flex flex gap-2 mx-auto items-stretch">
-        <Cell label="Escolaridade" text={client.escolaridade}/>
-        <Cell label="Sexo" text={client.sexo}/>
-        <Cell label="Profissão Ocupação" text={client.profissao_ocupacao}/>
-        <Cell label="Renda Individual" text={moneyBRL(client.renda_individual)}/>
+    <div className="flex-auto  flex-col items-center justify-center  p-3 ">
+      <h1 className="text-black text-2xl font-medium font-mono py-2 w-full text-center">Endereço</h1>
+        <div className="max-w-[900px] flex-auto w-full flex  p-1 gap-auto mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-cor_principal-700 hover:bg-neutral-100">
+          <Cell label="Logradouro" text={client.logradouro}/>
+          <Cell label="Número" text={client.numero}/>
+          <Cell label="Bairro/Setor" text={client.bairro_setor}/>
+          <Cell label="CEP" text={client.cep}/>
+          <Cell label="Área" text={client.area}/>
+          <Cell label="Complemento" text={client.complemento}/>
+        </div>
       </div>
-</div>
-
-
-
-    <h1 className="text-black text-2xl font-medium font-mono  InputText-cursive flex flex-col items-center justify-center p-3  py-5">Endereço</h1>
-      <div className="max-w-[800px]  bg-white border w-full flex flex gap-2 mx-auto items-stretch">
-        <Cell label="Logradouro" text={client.logradouro}/>
-        <Cell label="Bairro/Setor" text={client.bairro}/>
-        <Cell label="CEP" text={client.cep}/>
-      </div>
-      <div className="max-w-[800px] flex-auto  bg-white border w-full flex flex gap-2 mx-auto items-stretch">
-        <Cell label="Número" text={client.numero}/>
-        <Cell label="Área" text={client.area}/>
-        <Cell label="Complemento" text={client.complemento}/>
-      </div>
-    <h1 className="text-black text-2xl   font-medium font-mono flex flex-col items-center justify-center p-3  py-5">Tipo de Habitação</h1>
-      <div className="max-w-[800px]  bg-white border w-full flex flex gap-2 mx-auto items-stretch">
-        <Cell label="Tipo de imovel" text={client.tipo_de_imovel}/>
-        <Cell label="Número de comodos" text={client.numero_de_comodos}/>
-        <Cell label="Tempo de moradia " text={client.tempo_de_moradia}/>
-      </div>
-      <div className="max-w-[800px]  bg-white border w-full flex flex gap-2 mx-auto items-stretch" >
-        <Cell label="Edificada em" text={client.edificada_em}/>
-        <Cell label="Estado de Conservação" text={client.estado_de_conservacao}/>
-        <Cell label="Saneamento basico" text={client.saneamento_basico}/>
-      </div>
-   <h1 className="text-black text-2xl   font-medium font-mono flex flex-col items-center justify-center p-3  py-5">Composição Familiar</h1>
+    <div className="flex-auto flex flex-col items-center justify-center  p-3 ">
+      <h1 className=" text-black text-2xl font-medium font-mono py-2 w-full text-center">Tipo de Habitação</h1>
+        <div className="max-w-[900px] flex-auto  w-full flex  p-1 gap-auto mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-cor_principal-700 hover:bg-neutral-100">
+          <Cell label="Tipo de imovel" text={client.tipo_de_imovel}/>
+          <Cell label="Número de comodos" text={client.numero_de_comodos}/>
+          <Cell label="Tempo de moradia " text={client.tempo_de_moradia}/>
+          <Cell label="Edificada em" text={client.edificada_em}/>
+          <Cell label="Estado de Conservação" text={client.estado_de_conservacao}/>
+        </div>
+          <div className="max-w-[900px] flex-auto  w-full flex  p-1 gap-auto mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-cor_principal-700 hover:bg-neutral-100">
+            <Cell label="Saneamento basico(Possui?)" text={client.saneamento_basico}/>
+          </div>
+        </div>
+    <h1 className="text-black text-2xl font-medium font-mono py-2 w-full text-center" >Composição Familiar</h1>
       {
         client.nucleo_familiar ?
         client.nucleo_familiar.map((el,id)=>{
-          return (<Nucleo dados={el} key={'nucleo---'+id}/>)
+        return (<Nucleo dados={el} key={'nucleo---'+id}/>)
         })
         :
-        <div className="border rounded-4xl p-3 text-center text-2xl">Não Possui</div>
+          <div className="border rounded-4xl p-3 text-center text-2xl ">Não Possui</div>
       }
-      <h1 className="text-black text-2xl   font-medium font-mono flex flex-col items-center justify-center p-3  py-2">Outros dados</h1>
-      <div className="max-w-[800px] flex-auto  bg-white border w-full flex flex gap-2 mx-auto items-stretch">
-      <Cell label="Renda total Familiar" text={moneyBRL(client.renda_familiar)}/>
-        <Cell label="Recebe algum beneficio" text={client.recebe_algum_beneficio}/>
-        <Cell label="Total em beneficios" text={moneyBRL(client.total_beneficios)}/>
-        <Cell label="Forma de acesso " text={client.forma_acesso}/>
+    <div className="flex-auto flex flex-col items-center justify-center  p-3   ">
+
+    <h1 className="text-black text-2xl font-medium font-mono py-2 w-full text-center" >Renda</h1>
+      <div className="max-w-[300px] flex-auto  w-full flex  p-1 gap-auto mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-black  hover:bg-neutral-100 ">
+        <Cell label="Renda total Familiar" text={moneyBRL(client.renda_familiar)}/>
+        <Cell label="Renda Per Capita" text={moneyBRL(client.renda_percapita)}/>
       </div>
-      <div className="max-w-[800px] flex-auto  bg-white border w-full flex flex gap-2 mx-auto items-stretch" >
-        <Cell label="Ponto de Coleta(beneficios)" text={client.ponto_coleta}/>
-        <Cell label="Observação de cadastro" text={client.ponto_coleta}/>
-        <Cell label="Local onde foi feito o cadastro"text={client.local_cadastro}/>
+      <h1 className="text-black text-2xl font-medium font-mono py-2 w-full text-center">Outros dados</h1>
+        <div className="max-w-[900px] flex-auto w-full flex  p-1 gap-auto mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-cor_principal-700 hover:bg-neutral-100">
+          <Cell label="Recebe algum beneficio" text={client.recebe_algum_beneficio}/>
+          <Cell label="Total em beneficios" text={moneyBRL(client.total_beneficios)}/>
+          <Cell label="Forma de acesso " text={client.forma_acesso}/>
+        </div>
+        <div className="max-w-[900px]  flex-auto  w-full flex  p-1 gap-auto mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border border-cor_principal-700 hover:bg-neutral-100" >
+          <Cell label="Ponto de Coleta(beneficios)" text={client.ponto_coleta}/>
+          <Cell label="Observação de cadastro" text={client.observacao_cadastro}/>
+          <Cell label="Local onde foi feito o cadastro"text={client.local_cadastro}/>
+        </div>
       </div>
-  </div>
-    <div>
-    <label className="text-1xl  text-cor_principal-900 bg-white flex-1 flex flex-col px-1 mb-1 from-cor_principal-900  fontMaster">Anexo</label>
-    <input type="file" accept="application/pdf" />
- </div>
+    </div>
 </PageDefault>
+
+
 
 )
 }

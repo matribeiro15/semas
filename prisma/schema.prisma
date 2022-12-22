@@ -7,6 +7,72 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model atendimentos {
+  id               Int              @id @default(autoincrement())
+  id_client        Int
+  is_user          Int
+  data             DateTime         @db.DateTime(0)
+  atendimento      String           @db.Text
+  descricao        String?          @db.Text
+  status           String           @default("Aguardando") @db.VarChar(32)
+  fechado          Int              @default(0)
+  data_fechamento  DateTime?        @db.DateTime(0)
+  hash             String           @unique(map: "hash") @db.VarChar(64)
+  cadastro_usuario cadastro_usuario @relation(fields: [id_client], references: [id], onDelete: NoAction, map: "atendimentos_ibfk_1")
+  users            users            @relation(fields: [is_user], references: [id], onDelete: NoAction, map: "atendimentos_ibfk_2")
+  registros        registros[]
+
+  @@index([id_client], map: "id_client")
+  @@index([is_user], map: "is_user")
+}
+
+model cadastro_usuario {
+  id                           Int                   @id @default(autoincrement())
+  nome                         String                @db.Text
+  nome_social                  String?               @db.Text
+  rg                           String?               @unique(map: "rg") @db.VarChar(15)
+  orgao_expedidor              String?               @db.VarChar(20)
+  natural_de                   String                @db.Text
+  expedicao                    DateTime?             @db.Date
+  cpf                          String?               @unique(map: "cpf") @db.VarChar(15)
+  nis                          String?               @unique(map: "nis") @db.VarChar(15)
+  indentificacao_estrangeira   String?               @db.Text
+  telefone_celular             String?               @db.VarChar(20)
+  telefone_celular_alternativo String?               @db.Text
+  estado_civil                 String                @db.Text
+  nacionalidade                String                @db.Text
+  data_nasc                    DateTime?             @db.Date
+  escolaridade                 String                @db.Text
+  sexo                         String                @db.Text
+  profissao_ocupacao           String                @db.Text
+  renda_individual             Float                 @db.Float
+  logradouro                   String                @db.Text
+  bairro_setor                 String                @db.Text
+  cep                          String                @db.VarChar(20)
+  numero                       String                @db.VarChar(15)
+  area                         String?               @db.Text
+  complemento                  String?               @db.Text
+  tipo_de_imovel               String?               @db.Text
+  numero_de_comodos            String?               @db.VarChar(20)
+  tempo_de_moradia             String                @db.Text
+  edificada_em                 String?               @db.Text
+  estado_de_conservacao        String?               @db.Text
+  saneamento_basico            String?               @db.Text
+  forma_acesso                 String?               @db.Text
+  observacao_cadastro          String?               @db.Text
+  ponto_coleta                 String?               @db.Text
+  local_cadastro               String?               @db.Text
+  recebe_algum_beneficio       String?               @db.Text
+  data                         DateTime              @db.DateTime(0)
+  status                       String                @default("active") @db.VarChar(30)
+  hash                         String                @unique(map: "hash") @db.VarChar(64)
+  user                         String                @db.VarChar(64)
+  total_beneficios             Float?                @db.Float
+  atendimentos                 atendimentos[]
+  fila_de_atendimento          fila_de_atendimento[]
+  nucleo_familiar              nucleo_familiar[]
+}
+
 model dados_pessoais {
   id            Int      @id @default(autoincrement())
   id_user       Int
@@ -23,80 +89,23 @@ model dados_pessoais {
   @@index([id_user], map: "dados_pessoais_ibfk_1")
 }
 
-model sessions {
-  id          Int      @id @default(autoincrement())
-  id_user     Int
-  data        DateTime @default(now()) @db.DateTime(0)
-  ip          String   @db.Text
-  last_access DateTime @default(now()) @db.DateTime(0)
-  status      String   @default("active") @db.VarChar(32)
-  hash        String   @unique(map: "hash") @db.VarChar(64)
-  users       users    @relation(fields: [id_user], references: [id], onDelete: Cascade, map: "sessions_ibfk_1")
+model fila_de_atendimento {
+  id               Int              @id @default(autoincrement())
+  id_client        Int
+  id_user          Int
+  data             DateTime         @db.DateTime(0)
+  status           String           @default("Aguardando") @db.VarChar(32)
+  data_alt_status  DateTime?        @db.DateTime(0)
+  hash             String           @unique(map: "hash") @db.VarChar(64)
+  cadastro_usuario cadastro_usuario @relation(fields: [id_client], references: [id], onDelete: NoAction, map: "fila_de_atendimento_ibfk_1")
+  users            users            @relation(fields: [id_user], references: [id], onDelete: NoAction, map: "fila_de_atendimento_ibfk_2")
 
+  @@index([id_client], map: "id_client")
   @@index([id_user], map: "id_user")
-}
-
-model cadastro_usuario {
-  id                           Int               @id @default(autoincrement())
-  nome                         String            @db.Text
-  nome_social                  String?           @db.Text
-  rg                           String?           @unique(map: "rg") @db.VarChar(15)
-  orgao_expedidor              String?           @db.VarChar(20)
-  natural_de                   String            @db.Text
-  expedicao                    DateTime?         @db.Date
-  cpf                          String?           @unique(map: "cpf") @db.VarChar(15)
-  nis                          String?           @unique(map: "nis") @db.VarChar(15)
-  indentificacao_estrangeira   String?           @db.Text
-  telefone_celular             String?           @db.VarChar(20)
-  telefone_celular_alternativo String?           @db.Text
-  estado_civil                 String            @db.Text
-  nacionalidade                String            @db.Text
-  data_nasc                    DateTime?         @db.Date
-  escolaridade                 String            @db.Text
-  sexo                         String            @db.Text
-  profissao_ocupacao           String            @db.Text
-  renda_individual             Float             @db.Float
-  logradouro                   String            @db.Text
-  bairro_setor                 String            @db.Text
-  cep                          String            @db.VarChar(20)
-  numero                       String            @db.VarChar(15)
-  area                         String?           @db.Text
-  complemento                  String?           @db.Text
-  tipo_de_imovel               String?           @db.Text
-  numero_de_comodos            String?           @db.VarChar(20)
-  tempo_de_moradia             String            @db.VarChar(15)
-  edificada_em                 String?           @db.Text
-  estado_de_conservacao        String?           @db.Text
-  saneamento_basico            String?           @db.Text
-  forma_acesso                 String?           @db.Text
-  observacao_cadastro          String?           @db.Text
-  ponto_coleta                 String?           @db.Text
-  local_cadastro               String?           @db.Text
-  recebe_algum_beneficio       String?           @db.Text
-  data                         DateTime          @db.DateTime(0)
-  status                       String            @default("active") @db.VarChar(30)
-  hash                         String            @unique(map: "hash") @db.VarChar(64)
-  user                         String            @db.VarChar(64)
-  total_beneficios             Float?            @db.Float
-  nucleo_familiar              nucleo_familiar[]
-}
-
-model users {
-  id             Int              @id @default(autoincrement())
-  nome           String           @db.Text
-  email          String           @unique(map: "email") @db.VarChar(64)
-  senha          String           @db.Text
-  data           DateTime         @default(now()) @db.DateTime(0)
-  status         String           @default("pending") @db.VarChar(32)
-  hash           String           @unique(map: "hash") @db.VarChar(64)
-  dados_pessoais dados_pessoais[]
-  permissions    permissions[]
-  sessions       sessions[]
 }
 
 model nucleo_familiar {
   id               Int              @id @default(autoincrement())
-  responsavel      String?          @db.Text
   observacao       String?          @db.Text
   nome             String           @db.Text
   data_nasc        DateTime?        @db.Date
@@ -132,8 +141,51 @@ model permissions_list {
   permission String @unique(map: "permission") @db.VarChar(128)
 }
 
+model registros {
+  id             Int          @id @default(autoincrement())
+  id_atendimento Int
+  data           DateTime     @db.DateTime(0)
+  content        String       @db.Text
+  id_user        Int
+  hash           String       @unique(map: "hash") @db.VarChar(64)
+  atendimentos   atendimentos @relation(fields: [id_atendimento], references: [id], onDelete: NoAction, map: "registros_ibfk_1")
+  users          users        @relation(fields: [id_user], references: [id], onDelete: NoAction, map: "registros_ibfk_2")
+
+  @@index([id_atendimento], map: "id_atendimento")
+  @@index([id_user], map: "id_user")
+}
+
+model sessions {
+  id          Int      @id @default(autoincrement())
+  id_user     Int
+  data        DateTime @default(now()) @db.DateTime(0)
+  ip          String   @db.Text
+  last_access DateTime @default(now()) @db.DateTime(0)
+  status      String   @default("active") @db.VarChar(32)
+  hash        String   @unique(map: "hash") @db.VarChar(64)
+  users       users    @relation(fields: [id_user], references: [id], onDelete: Cascade, map: "sessions_ibfk_1")
+
+  @@index([id_user], map: "id_user")
+}
+
 model settings {
   id     Int    @id @default(autoincrement())
   config String @unique(map: "config") @db.VarChar(32)
   value  String @db.Text
+}
+
+model users {
+  id                  Int                   @id @default(autoincrement())
+  nome                String                @db.Text
+  email               String                @unique(map: "email") @db.VarChar(64)
+  senha               String                @db.Text
+  data                DateTime              @default(now()) @db.DateTime(0)
+  status              String                @default("pending") @db.VarChar(32)
+  hash                String                @unique(map: "hash") @db.VarChar(64)
+  atendimentos        atendimentos[]
+  dados_pessoais      dados_pessoais[]
+  fila_de_atendimento fila_de_atendimento[]
+  permissions         permissions[]
+  registros           registros[]
+  sessions            sessions[]
 }

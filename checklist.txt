@@ -1,8 +1,7 @@
 
    para casa:
-   -colocar mapa do brasil em cadastrar@
    -colocar valor de aluguel
-   -cedidio por quem?
+   -cedido por quem?
    -arrumar pular paginas
    -arrumar botão de anexo
    -colocar API de atendimentos
@@ -12,16 +11,15 @@
     -arrumar pagina de novo atendimento
     -somar rendas no sistema
     -colocar button no delete do nucleo_familiar
-    -
 
-
-
-
-para o trabalho:
--arrumar os buttons
--tirar os s dos atentimentos
--criar pagina de lista de espera
--criar pagina de relatorio relatorio tecnico
--ver os atendimento estao corretos
+  para o trabalho:
+  -criar pagina de lista de espera
+  -criar pagina de relatório  técnico
+  -ver os atendimento estão corretos
+  -
 -
+
+
+   observação:
+-11 técnicos
 -

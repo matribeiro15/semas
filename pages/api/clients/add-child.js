@@ -18,11 +18,11 @@ export default async function handler(req, res) {
       if(cad){
         var request = req.body;
         request.id_cadastro = cad.id;
-        request.cadastro_usuario = {
-          connect:{
-            id:cad.id
-          }
-        }
+        // request.cadastro_usuario = {
+        //   connect:{
+        //     id:cad.id
+        //   }
+        // }
         request.user = user.hash;
         var result = await Cidadao.newChild(req.body);
         if(result){

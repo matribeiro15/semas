@@ -21,7 +21,6 @@ var setMask = function(mask,text){
   var n = 0;
   var result = ''
   for (var i = 0; i < mask.length; i++) {
-    console.log(mask[i]);
     if(mask[i] == 'd'){
       if(typeof text[n] == 'string'){
         result += text[n];
