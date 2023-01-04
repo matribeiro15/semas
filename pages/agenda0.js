@@ -7,11 +7,6 @@ import PageDefault from '../components/pageDefault.js'
 export default function Agenda(){
 
 
-
-
-
-
-
 return(
   <PageDefault  title="Agenda| SEMAS" checkUserLogin={true} label="Agendar Visita" className="border max-w-[400px]">
       <div className="flex-auto flex flex-col items-center justify-last p-2 border max-w-[400px] rounded p-5 m-5 transition rounded-md hover:shadow-lg hover:border-cor_principal">
@@ -28,18 +23,12 @@ return(
              <textarea className="border border-cor_principal-700  p-3 m-6 rounded"  placeholder="Observação" name="obs" required></textarea>
            </div>
 
-
-
            <div className="text-center mt-1 w-full">
             <ButtonDefault text="Agendar"/>
            </div>
          </div>
       </div>
-
-
 </PageDefault>
-
-
 
 )
 }

@@ -29,10 +29,10 @@ export default function Beneficios(props){
               <span className="cursor-pointer hover:text-neutral-200 transition"><FaRegCalendarAlt className="text-4xl"/>Agendar</span>
             </div>
 
-          </div>
-          <div className="max-w-[600px] border-cor_principal-900 w-full flex flex-auto gap-10 mx-auto justify-center items-center">
-            <textarea  className="border border-cor_principal-700 resize w-full flex flex-auto gap-7 mx-auto justify-center items-center p-3 m-10 rounded"  placeholder="Relátorio Tecnico" name="relato"  required></textarea>
-          </div>
+            </div>
+            <div className="max-w-[600px] border-cor_principal-900 w-full flex flex-auto gap-10 mx-auto justify-center items-center">
+              <textarea  className="border border-cor_principal-700 resize w-full flex flex-auto gap-7 mx-auto justify-center items-center p-3 m-10 rounded"  placeholder="Relátorio Tecnico" name="relato"  required></textarea>
+            </div>
 
           <div className="text-center mt-8 w-full">
            <ButtonDefault text="Adicionar ao cadastro"/>

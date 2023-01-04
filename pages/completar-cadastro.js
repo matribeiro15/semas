@@ -1,7 +1,6 @@
 import {FormDefault,InputText,ButtonDefault} from  "../components/du-objects.js"
 import Link from "next/link"
 import Router from 'next/router';
-
 import  MdOutlineFamilyRestroom  from "react-icons/md";
 export default function Cadastro(){
 

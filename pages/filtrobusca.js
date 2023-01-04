@@ -30,14 +30,13 @@ import PageDefault from '../components/pageDefault.js'
           <option value="Inativo">Inativo</option>
           <option value="Desligado:Alta">Desligado:Alta</option>
           <option value="Desligado:Encaminhado">Desligado:Encaminhado</option>
-
         </SelectInput>
 
         </div>
-          <div className="flex m-3  gap-[20px] ">
+          <div className="flex m-2  gap-[15px] ">
           <ButtonDefault text="Buscar"/>
-          <InputText fatherClassName="flex-1"  type="search" className="rounded " label="Total" withLabel={true}/>
-        </div>
+          <InputText fatherClassName="flex-col"  type="search" className="rounded " label="Total" withLabel={true}/>
+          </div>
       </PageDefault>
     )
   }

@@ -1,25 +1,23 @@
 
    para casa:
-   -colocar valor de aluguel
-   -cedido por quem?
-   -arrumar pular paginas
    -arrumar botão de anexo
    -colocar API de atendimentos
-   -colocar botton  na div
-    -atualizar paginas
-    -arrumar pagina de ver cadastro
-    -arrumar pagina de novo atendimento
-    -somar rendas no sistema
-    -colocar button no delete do nucleo_familiar
-
-  para o trabalho:
-  -criar pagina de lista de espera
-  -criar pagina de relatório  técnico
-  -ver os atendimento estão corretos
-  -
--
-
-
-   observação:
--11 técnicos
--
+   -atualizar paginas
+   -arrumar pagina de ver cadastro
+   -pagina de ver atendimento
+   -arrumar pagina de novo atendimento
+   -colocar permicao de acesso
+   -coloca perfil de login
+   -mudar login de email para CPF se possivel
+   -colocar ver atendimentos e  editar cadastro
+   -fila de espera
+   -visualizacao de relatorios tecnico e adicionar relatorio novo tecnico
+   -estatisticas
+   -ver anexos
+   -imprimir ficha de cadastro
+   -agendamentos
+   -perfil de ACESSO
+   -Quando encaminhar mandar
+   -colocar cor de status
+   -api da agenda
+   -api de filtro busca
