@@ -128,6 +128,7 @@ return (
         </FormDefault>
         <FormDefault onSuccess={success} onError={error} API="clients/update" noSendToken={true} noSendHash={true} resetAfterSend={false} className="max-w-[1000px] w-full flex flex-wrap gap-3 justify-center mx-auto self-center items-center justify-center">
           <h1 className="text-black text-2xl font-medium font-mono py-4  w-full text-center mb-3">Renda Familiar</h1>
+          <input type="hidden" name="cadastro" value={cadastro}/>
           <div className="rounded border p-2 w-full flex flow-wrap">
             <div>
               <h2 className="font-bold text-sm text-cor_principal-700 mb-3">Recebe algum beneficio?</h2>

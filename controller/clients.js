@@ -184,7 +184,7 @@ Cidadao.updateBasic = async (dados,user)=>{
       }
     }
   }
-  console.log(dados,user);
+  console.log("CHECK =========> ",dados,user);
   var res = await prisma.cadastro_usuario.update({
     where:{
       hash:user

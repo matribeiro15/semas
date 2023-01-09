@@ -21,10 +21,11 @@ export default async function handler(req, res) {
         delete obj[x];
       }
     }
-    var us = obj.user;
-    delete obj.user;
+
+
+    var us = obj.cadastro;
+    delete obj.cadastro;
     obj.recebe_algum_beneficio = '['+obj.recebe_algum_beneficio.join('][')+']';
-    console.log(obj);
     var resp = await Cidadao.updateBasic(obj,us)
     if(resp){
       res.status(200).json(resp);
