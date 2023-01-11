@@ -1,6 +1,6 @@
 import {InputText,SelectInput,ButtonDefault} from "../du-objects.js"
 import {FaRegCalendarAlt}  from "react-icons/fa";
-
+import Link from 'next/link'
 export default function Acompanhamentos(props){
     return (
 
@@ -32,7 +32,12 @@ export default function Acompanhamentos(props){
               <option value="Desligado:Encaminhado">Desligado:Encaminhado</option>
             </SelectInput>
           </div>
+          <div className="px-5">
+          <Link href="/agenda0">
+          <h2 className="text-md inline-block rounded  cursor-pointer font-semibold text-cor_principal-900 m-1  hover:shadow hover:border"><FaRegCalendarAlt className="text-3xl m-2 font-13 text-center inline"/>Agendar</h2>
+          </Link>
 
+          </div>
 
 
           <div className="max-w-[600px] border-cor_principal-900 w-full flex flex-auto gap-10 mx-auto justify-center items-center">

@@ -80,7 +80,7 @@ export default function Cadastro(){
   }
   }
 
-  return (
+return (
 <PageDefault title="Novo Atendimento | SEMAS" checkUser={true} label="Novo Atendimento" icon="FaFileImport">
   <FormDefault API="users/complete" id="formCad" onSuccess={success} resetAfterSend={false} className="w-full flex flex-col justify-center items-stretch max-w-[1000px]">
     <h1 className="text-2xl text-cor_principal-900 font-bold px-4 mb-0">{client ? client.nome : ''}</h1>
@@ -92,7 +92,6 @@ export default function Cadastro(){
         <button className="m-2 rounded  text-white inline-block  bg-cor_principal-600 shadow-lg hover:shadow-md border-2 border-white hover:border-2 hover:scale-[0.99] hover:shadow-cor_principal-600/50 shadow-cor_principal-600/50 px-6 py-1 transition-all duration-100" onClick={(e)=>{e.preventDefault(); setActiveScreen('encaminhamento')}}>Encaminhamento</button>
         <button className="m-2 rounded  text-white inline-block  bg-cor_principal-600 shadow-lg hover:shadow-md border-2 border-white hover:border-2 hover:scale-[0.99] hover:shadow-cor_principal-600/50 shadow-cor_principal-600/50 px-6 py-1 transition-all duration-100" onClick={(e)=>{e.preventDefault(); setActiveScreen('atendimento-simplificado')}}>Atendimento Simplificado</button>
       </div>
-
     {telaAtiva()}
   </FormDefault>
 </PageDefault>

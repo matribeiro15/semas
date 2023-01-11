@@ -30,5 +30,5 @@
 .tag:hover ~ .menu {
   top: 60px;
   z-index: 1;
-  opacity: 1;
+  opacity: 2;
 }

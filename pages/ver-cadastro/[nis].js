@@ -2,6 +2,7 @@ import {FormDefault,InputText,ButtonDefault,SelectInput} from  "../../components
 import Router,{useRouter} from 'next/router';
 import {useEffect,useState} from 'react';
 import Leh from '../../controller/leh.js'
+import Link from "next/link"
 import LoadingBottom from '../../components/loading-bottom.js'
 import Menu from '../../components/menu.js'
 import HeadLeh from '../../components/head.js'
@@ -110,10 +111,30 @@ const client = {
 */
 
 return(
-
-<PageDefault title="Ver cadastro | SEMAS" checkUserLogin={true} loading={!client} callbackUser={getUser} label="Cadastro de triagem Social" className="max-w-[900px]">
-  <div className="w-100 bg-white shadow py-2 px-5 header-new position-relative protege rounded-xl shadow-cor_principal-600/50 max-w-[900px]">
-    <h1 className="text-cor_principal-900 text-2xl font-medium font-mono py-2  w-full text-center">Indentificação</h1>
+<PageDefault title="Ver cadastro | SEMAS" checkUserLogin={true} loading={!client} callbackUser={getUser} label="Cadastro de triagem Social" className="max-w-[900px] col-4 mb-1 ">
+<div className="py-3 p-2 max-w-[400px]">
+  <Link href="/ver-atendimento/21131212313">
+    <h1 className="font-bold p-1 text-xl inline-block rounded  cursor-pointer font-semibold text-red-900 m-1  hover:shadow hover:border" onclick="page_modal('/ver-atendimento','?nis=21131212313')">Atendimento</h1>
+    </Link>
+        <div className="col-5 border-b-2 border-l-2 px-1">
+        <strong>Atendimento</strong>
+        <div className="mb-2">PAIF</div></div>
+        <div className="col-5 border-b-2 border-l-2 px-1">
+        <strong>Instituição</strong>
+        <div className="mb-2">CRAS</div></div>
+        <div className="col-5 border-b-2 border-l-2 px-1">
+        <strong>Descrição</strong>
+        <div className="mb-2">Usuario solicitando baneficio nutri vida:leite</div></div>
+        <div className="col-2 border-b-2 border-l-2 px-1">
+        <strong>Responsável técnico</strong>
+        <div className="mb-2">Ana lucia</div></div>
+        <div className="col-2 border-b-2 border-l-2 px-1">
+        <strong>Data de solicitação</strong>
+        <div className="mb-2">09/03/2020</div></div>
+        <div className="py-2 col-12 text-center bg-cor_principal-700 text-white bold font-13">Status</div>
+    </div>
+    <div className="w-100 bg-white shadow py-2 px-5 header-new position-relative protege rounded-xl shadow-cor_principal-600/50 max-w-[900px]">
+  <h1 className="text-cor_principal-900 text-2xl font-medium font-mono py-2  w-full text-center">Indentificação</h1>
       <div className="max-w-[900px] col-3 edit flex-auto w-full flex col-3 edit p-1  mx-auto items-stretch transition hover:scale-110 rounded-md hover:shadow-lg hover:border hover:bg-neutral-100">
         <Cell label="Nome Responsável"  text={client.nome}/>
         <Cell label="CPF" text={setMask('ddd.ddd.ddd-dd',client.cpf)}/>
@@ -192,8 +213,11 @@ return(
           <Cell label="Observação de cadastro" text={client.observacao_cadastro}/>
           <Cell label="Local onde foi feito o cadastro"text={client.local_cadastro}/>
         </div>
+
       </div>
+
     </div>
+
 </PageDefault>
 
 

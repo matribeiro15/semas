@@ -22,7 +22,7 @@ export default function FilaDeAtendimento() {
   },[])
 
   return (
-    <PageDefault checkUser={true} title="Fila de Atendimentos| SEMAS"   label="Fila de Atendimento" icon="FaSearch">
+    <PageDefault checkUser={true} title="Fila de Atendimentos| SEMAS"   label="Fila de Atendimento">
       <FormDefault API="clients/search" noSendToken={true} noSendHash={true} onSuccess={success} onError={err} className="">
         <div className="flex gap-[18px]">
           <SelectInput fatherClassName="flex-[1]" onChange={(e)=>{setNm(e.target.value)}} className="rounded" label="Pesquisar Por" withLabel={true}>
