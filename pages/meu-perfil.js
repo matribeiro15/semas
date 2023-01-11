@@ -73,6 +73,7 @@ export default function MeuPerfil(props){
   }
 
   return (
+
     <div className="rounded-xl p-2 w-full flex">
       <LoadingBottom show={showLoading}/>
       <HeadLeh>
@@ -83,7 +84,7 @@ export default function MeuPerfil(props){
       <div className="flex-auto w-max md:w-screen pt-[70px] md:pt-0 px-4 md:pr-[3em] md:pl-4">
         <AlternativeForm onSuccess={success} onError={onError} action="/api/users/myaccount" id="formCadMyData" className="flex flex-col">
 
-          <h2 className="w-full text-left text-md font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4">DADOS DE ACESSO</h2>
+          <h2 className="w-full text-left text-md font-bold text-white bg-gradient-1 border rounded-full py-3 px-5 mt-8 mb-4">Dados de acesso</h2>
           <div className="flex flex-col md:flex-row mb-5">
             <div className="flex-1">
               <InputText onChange={changeEl} value={defaultData.email !== undefined ? defaultData.email : ''} withLabel={true} type="email" label="Email" name="email" className="min-w-[200px] rounded-md md:rounded-r-none"/>
@@ -96,8 +97,6 @@ export default function MeuPerfil(props){
             </div>
           </div>
 
-
-
           <div className="w-full text-center md:text-left mb-8 md:mb-1 mt-8">
             <ButtonDefault text="SALVAR"/>
           </div>
@@ -105,5 +104,6 @@ export default function MeuPerfil(props){
         </AlternativeForm>
       </div>
     </div>
+
   );
 }

@@ -1,5 +1,6 @@
 import {InputText,SelectInput,ButtonDefault} from "../du-objects.js"
 import {FaRegCalendarAlt}  from "react-icons/fa";
+import Link from 'next/link'
 
 export default function Beneficios(props){
     return (
@@ -25,8 +26,10 @@ export default function Beneficios(props){
               <option  value="Encaminhado">Encaminhado</option>
               <option value="Cancelado/Suspenso">Cancelado/Suspenso</option>
             </SelectInput>
-            <div className="flex-col items-inline pr-2 m-3 py-4 rounded">
-              <span className="cursor-pointer hover:text-neutral-200 transition"><FaRegCalendarAlt className="text-4xl"/>Agendar</span>
+            <div className="px-5">
+            <Link href="/agenda0">
+            <h2 className="text-md inline-block rounded  cursor-pointer font-semibold text-cor_principal-900 m-1  hover:shadow hover:border"><FaRegCalendarAlt className="text-3xl m-2 font-13 text-center inline"/>Agendar</h2>
+            </Link>
             </div>
 
             </div>

@@ -80,7 +80,7 @@ export default function CardClient(props){
         <LinkItem link={'/ver-cadastro/'+props.client.nis} text="Ver Cadastro" icon="FaRegEye"/>
         <LinkItem link={'/editar-usuario?client='+props.client.hash} text="Editar Cadastro" icon="FaUserEdit"/>
         <LinkItem link={'/novo-atendimento?client='+props.client.hash} text="Novo Atendimento" icon="FaFileImport"/>
-        <LinkItem link={'/ver-atendimento?client='+props.client.nis} text="Ver Atedimentos" icon=""/>
+        <LinkItem link={'/ver-atendimento?client='+props.client.nis} text="Ver Atedimentos" icon="FaFileSignature"/>
         <LinkItem onClick={addFila} text="Adicionar à Fila" icon="FaPlus"/>
       </div>
   </div>

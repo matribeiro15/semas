@@ -82,7 +82,7 @@ export default function Familiar(){
 
 return (
 <>
-  <PageDefault title="Núcleo Familiar | SEMAS" icon="MdOutlineFamilyRestroom" label="Núcleo familiar">
+  <PageDefault title="Núcleo Familiar | SEMAS"  label="Núcleo familiar">
     <div className="w-full flex gap-x-{size} pb-2">
       <div className="flex-auto  flex-col items-center  pb-3">
         <div className="flex-auto flex flex-col items-center justify-center">
@@ -173,6 +173,7 @@ return (
           </SelectInput>
           <InputText fatherClassName="flex-1" withLabel={true} name="observacao_cadastro" label="Observação de cadastro" className="rounded"  required={false}/>
           <InputText fatherClassName="flex-1" withLabel={true} name="ponto_coleta" label="Ponto de coleta(beneficios)" className="rounded"  required={false}/>
+
           <div className="text-center mt-8 w-full">
            <ButtonDefault text="Salvar"/>
          </div>

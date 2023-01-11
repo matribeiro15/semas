@@ -13,7 +13,11 @@ return(
   <div className="flex-auto flex flex-col  max-w-[1000px] fontMaster: 50; p-1 m-2">
     <div className="flex gap-[10px]">
       <div className="border flex-auto rounded max-w-[300px] bg-white">
-        <h2 className="mb-1 uppercase text-red-800 text-black text-base-1 font-medium  font-bold p-1 m-1" onclick="page_modal('/ver-cadastro','?nis=121131212313')">Usuário</h2>
+      <div className="px-5">
+      <Link href="/ver-cadastro/21131212313">
+      <h2 className="font-bold p-1 text-xl inline-block rounded  cursor-pointer font-semibold text-red-900 m-1  hover:shadow hover:border" onclick="page_modal('/ver-cadastro','?nis=121131212313')">Usuário</h2>
+      </Link>
+      </div>
           <div className="text-black flex-auto p-1 mb-1">
               <strong>Nome Responsável</strong>
               <div className="mb-1">Ana Paula</div>
@@ -59,11 +63,13 @@ return(
 
           </div>
         </div>
-            <div className="col-12 d-flex flex-wrap py-3">
-              <span className="cursor-pointer  hover:text-neutral-200 transition mr-3 text-cor_principal-800"><FaFileSignature className="text-4xl inline ml-2"/>Adicionar Relátorio</span>
-              <span className="cursor-pointer hover:text-neutral-200 transition mr-3 text-cor_principal-800"><FaFilePdf className="text-4xl inline ml-2"/>PDF</span>
-            </div>
-              <h1 className="mb-3 text-cor_principal-900 text-3xl font-medium text-center">Relátorios</h1>
+            <div className="col-12  py-3">
+            <Link href="/adicionar-relatorio/21131212313 col-12 d-flex flex-wrap py-3">
+            <h2 className="cursor-pointer  items-center justify-center  hover:text-neutral-200 transition mr-3 items-center  text-cor_principal-800"><FaFileSignature className="text-4xl inline mr-2 flex flex-col"/>Adicionar Relátorio</h2>
+            </Link>
+            <span className="cursor-pointer hover:text-neutral-200 transition mr-3 text-cor_principal-800"><FaFilePdf className="text-4xl ml-2 flex flex-col"/>PDF</span>
+          </div>
+            <h1 className="mb-3 text-cor_principal-900 text-3xl font-medium text-center">Relátorios</h1>
             <div className="flex-auto bg-cor_principal-700 font-13 text-white text-center py-2">Nenhum Relátorio até o momento</div>
     </div>
 </PageDefault>

@@ -22,7 +22,7 @@ export default function Home() {
   },[])
 
   return (
-    <PageDefault title="SEMAS" checkUser={true} label="Pesquisar Usuário" icon="FaSearch">
+    <PageDefault title="SEMAS" checkUser={true} label="Pesquisar Usuário">
       <FormDefault API="clients/search" noSendToken={true} noSendHash={true} onSuccess={success} onError={err} className="">
         <div className="flex gap-[18px]">
           <SelectInput fatherClassName="flex-[1]" onChange={(e)=>{setNm(e.target.value)}} className="rounded-md" label="Pesquisar Por" withLabel={true}>
@@ -38,6 +38,6 @@ export default function Home() {
         </div>
       </FormDefault>
         <FrameClientResult results={results}/>
-      </PageDefault>
+    </PageDefault>
   )
 }

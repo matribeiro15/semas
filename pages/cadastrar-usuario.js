@@ -43,7 +43,7 @@ export default function Ficha(){
     )
   }
   return (
-      <PageDefault checkUser={true} title="Cadastrar Usuario| SEMAS" label="Cadastrar Usuario" icon="FaUserPlus">
+      <PageDefault checkUser={true} title="Cadastrar Usuario| SEMAS" label="Cadastrar Usuario" >
         <div className="flex-auto flex flex-col items-center justify-center p-3">
           <h1 className="text-black text-2xl font-medium font-mono  InputText-cursive  justify-center  py-3 ">Documentação do Responsável</h1>
            <AlternativeForm onSuccess={success} onError={error} action="/api/clients/create" id="formCad" resetAfterSend={true} className="max-w-[800px] w-full flex flex-wrap gap-1 mx-auto justify-center items-stretch">
