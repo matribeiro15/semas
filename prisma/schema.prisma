@@ -10,7 +10,7 @@ datasource db {
 model atendimentos {
   id               Int              @id @default(autoincrement())
   id_client        Int
-  is_user          Int
+  id_user          Int
   data             DateTime         @db.DateTime(0)
   atendimento      String           @db.Text
   descricao        String?          @db.Text
@@ -19,11 +19,11 @@ model atendimentos {
   data_fechamento  DateTime?        @db.DateTime(0)
   hash             String           @unique(map: "hash") @db.VarChar(64)
   cadastro_usuario cadastro_usuario @relation(fields: [id_client], references: [id], onDelete: NoAction, map: "atendimentos_ibfk_1")
-  users            users            @relation(fields: [is_user], references: [id], onDelete: NoAction, map: "atendimentos_ibfk_2")
+  users            users            @relation(fields: [id_user], references: [id], onDelete: NoAction, map: "atendimentos_ibfk_2")
   registros        registros[]
 
   @@index([id_client], map: "id_client")
-  @@index([is_user], map: "is_user")
+  @@index([id_user], map: "is_user")
 }
 
 model cadastro_usuario {

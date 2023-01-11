@@ -1,25 +1,25 @@
 
    para casa:
-   -arrumar botão de anexo
-   -colocar API de atendimentos
-   -arrumar pagina de ver cadastro
-   -pagina de ver atendimento
-   -arrumar pagina de novo atendimento
-   -colocar permicao de acesso
-   -coloca perfil de login
-   -mudar login de email para CPF se possivel
-   -colocar ver atendimentos e  editar cadastro
-   -fila de espera
-   -visualizacao de relatorios tecnico e adicionar relatorio novo tecnico
-   -ver anexos
-   -fazer PDF
-   -imprimir ficha de cadastro
-   -agendamentos
-   -perfil de ACESSO
-   -Quando encaminhar mandar
-   -colocar cor de status e dados
-   -api da agenda
-   -api de filtro busca
-   -qundo vencer um atendimento avisar para fazer o recadastramento de novo
-   -Arrumar pagina de meu perfil
-   -estatisticas
+   - arrumar botão de anexo
+   - colocar API de atendimentos
+   - arrumar pagina de ver cadastro
+   - pagina de ver atendimento
+   - arrumar pagina de novo atendimento
+   - colocar permicao de acesso
+   - coloca perfil de login
+   - mudar login de email para CPF se possivel
+   - colocar ver atendimentos e  editar cadastro
+   - fila de espera
+   - visualizacao de relatorios tecnico e adicionar relatorio novo tecnico
+   - ver anexos
+   - fazer PDF
+   - imprimir ficha de cadastro
+   - agendamentos
+   - perfil de ACESSO
+   - Quando encaminhar mandar
+   - colocar cor de status e dados
+   - api da agenda
+   - api de filtro busca
+   - qundo vencer um atendimento avisar para fazer o recadastramento de novo
+   - Arrumar pagina de meu perfil
+   - estatisticas
