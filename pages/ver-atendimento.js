@@ -7,7 +7,6 @@ import Router from "next/router"
 import PageDefault from '../components/pageDefault.js'
 export default function VerAtendimento(){
 
-
 return(
 <PageDefault  title="Atendimentos do Cadastro | SEMAS" checkUserLogin={true} label="Ver atendimento" className="max-w-[1000px]">
   <div className="flex-auto flex flex-col  max-w-[1000px] fontMaster: 50; p-1 m-2">
@@ -60,7 +59,6 @@ return(
               <div className="mb-2">09/03/2020</div></div>
 
               <div className="py-2 col-12 text-center bg-cor_principal-700 text-white bold font-13">Status</div>
-
           </div>
         </div>
             <div className="col-12  py-3">

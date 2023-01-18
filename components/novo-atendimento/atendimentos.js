@@ -34,7 +34,7 @@ export default function Atendimento(props){
        </SelectInput>
        <div className="px-5">
        <Link href="/agenda0">
-       <h2 className="text-md inline-block rounded  cursor-pointer font-semibold text-cor_principal-900 m-1  hover:shadow hover:border"><FaRegCalendarAlt className="text-3xl m-2 font-13 text-center inline"/>Agendar</h2>
+       <h2 className="text-md inline-block rounded  cursor-pointer font-semibold text-cor_principal-900 m-1  hover:shadow hover:border"><FaRegCalendarAlt className="text-3xl m-1 font-13 text-center inline"/>Agendar</h2>
        </Link>
 
        </div>

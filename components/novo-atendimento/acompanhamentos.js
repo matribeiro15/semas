@@ -31,17 +31,15 @@ export default function Acompanhamentos(props){
               <option value="Desligado:Alta">Desligado:Alta</option>
               <option value="Desligado:Encaminhado">Desligado:Encaminhado</option>
             </SelectInput>
+            <Link href="/agenda0">
+            <h2 className="text-md inline-block rounded  cursor-pointer font-semibold text-cor_principal-900 m-1  hover:shadow hover:border"><FaRegCalendarAlt className="text-3xl m-1 font-13 text-center inline"/>Agendar</h2>
+            </Link>
+          </div>
+          <div className="max-w-[600px] border-cor_principal-900 w-full flex flex-auto gap-10 mx-auto justify-center items-center">
+          <textarea  className="border border-cor_principal-700 w-full flex flex-auto gap-7 mx-auto justify-center items-center p-3 m-10 rounded"  placeholder="Relátorio Tecnico" name="relato" required></textarea>
           </div>
           <div className="px-5">
-          <Link href="/agenda0">
-          <h2 className="text-md inline-block rounded  cursor-pointer font-semibold text-cor_principal-900 m-1  hover:shadow hover:border"><FaRegCalendarAlt className="text-3xl m-2 font-13 text-center inline"/>Agendar</h2>
-          </Link>
 
-          </div>
-
-
-          <div className="max-w-[600px] border-cor_principal-900 w-full flex flex-auto gap-10 mx-auto justify-center items-center">
-            <textarea  className="border border-cor_principal-700 w-full flex flex-auto gap-7 mx-auto justify-center items-center p-3 m-10 rounded"  placeholder="Relátorio Tecnico" name="relato" required></textarea>
           </div>
 
           <div className="rounded-full text-center mt-8 w-full">

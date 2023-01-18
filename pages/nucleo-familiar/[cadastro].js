@@ -76,6 +76,8 @@ export default function Familiar(){
         <LoaderForm show={true}/>
       </PageDefault>
     );
+  }else{
+    console.log(client);
   }
 
 
@@ -86,8 +88,8 @@ return (
     <div className="w-full flex gap-x-{size} pb-2">
       <div className="flex-auto  flex-col items-center  pb-3">
         <div className="flex-auto flex flex-col items-center justify-center">
-          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-cor_principal-700 to-violet-900  font-bold text-2xl fontMaster">{client.nome}</h1>
-          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-cor_principal-700 to-violet-900  font-bold text-2xl mb-3 fontMaster">CPF {setMask('ddd.ddd.ddd-dd',client.cpf)}</h1>
+          <h1 className="text-cor_principal-900  font-bold text-2xl  fontMaster">{client.nome}</h1>
+          <h1 className="text-cor_principal-900 font-bold text-2xl mb-3 fontMaster">CPF {setMask('ddd.ddd.ddd-dd',client.cpf)}</h1>
         </div>
         <FormDefault onSuccess={successAdd} onError={onErrorAdd} API="clients/add-child" id="formCad" resetAfterSend={true} className="max-w-[1000px] w-full flex flex-wrap gap-1 mx-auto justify-center items-stretch">
           <h1 className="text-black text-2xl font-medium font-mono py-4  w-full text-center ">Composição Familiar</h1>
