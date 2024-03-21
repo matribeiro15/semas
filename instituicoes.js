@@ -1,16 +1,9 @@
 const instituicoes = [
 "SEMAS",
-"CRAS",
-"CCI",
+"CRAS CENTRAL",
+"CRAS NOVO MUNDO"
 "CREAS",
-"CREAS II",
-"CCG",
-"CCC",
-"UACA",
-"UAM",
-"Projeto Roda Moinho",
-"Conselho Tutelar Sul",
-"Conselho Tutelar Norte",
+"Conselho Tutelar,
 "Casa dos Conselhos"
 ];
 
