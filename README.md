@@ -12,7 +12,7 @@ yarn dev
 ```
 Or, 
 
-```npx next build``` and ``ǹpm start```
+```npx next build``` and ```npm start```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
