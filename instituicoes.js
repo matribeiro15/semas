@@ -3,7 +3,7 @@ const instituicoes = [
 "CRAS CENTRAL",
 "CRAS NOVO MUNDO",
 "CREAS",
-"Conselho Tutelar,
+"Conselho Tutelar",
 "Casa dos Conselhos"
 ];
 
