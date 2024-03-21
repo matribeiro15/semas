@@ -1,7 +1,7 @@
 const instituicoes = [
 "SEMAS",
 "CRAS CENTRAL",
-"CRAS NOVO MUNDO"
+"CRAS NOVO MUNDO",
 "CREAS",
 "Conselho Tutelar,
 "Casa dos Conselhos"
